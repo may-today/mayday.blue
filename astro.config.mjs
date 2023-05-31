@@ -7,12 +7,18 @@ import AstroPWA from '@vite-pwa/astro'
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    define: {
+      __DATE__: `'${new Date().toISOString()}'`,
+    },
+  },
   integrations: [
     UnoCSS({
       presets: [presetIcons(), presetUno()],
     }),
     prefetch(),
     AstroPWA({
+      mode: 'development',
       base: '/',
       scope: '/',
       includeAssets: [
@@ -49,6 +55,10 @@ export default defineConfig({
         workbox: {
           navigateFallback: '/404',
           globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
+        },
+        devOptions: {
+          enabled: true,
+          navigateFallbackAllowlist: [/^\/404$/],
         },
       },
     }),
