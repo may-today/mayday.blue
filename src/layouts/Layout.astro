@@ -6,7 +6,6 @@ export interface Props {
 }
 
 const { title } = Astro.props
-const buildDate = __DATE__;
 ---
 
 <!DOCTYPE html>
@@ -27,9 +26,6 @@ const buildDate = __DATE__;
 	<body>
 		<slot />
 	</body>
-	<footer>
-		Built at: { buildDate }
-	</footer>
 </html>
 <style is:global>
 	:root {

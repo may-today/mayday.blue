@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Card from '../components/Card.astro'
 
 import { songs } from '../data/songs'
 console.log(songs)
@@ -8,7 +7,7 @@ console.log(songs)
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<h1>to <span class="text-gradient">Astro</span></h1>
+		<h1>to</h1>
 		<a href="/page2" rel="prefetch" class="font-bold">page2</a>
 		{ songs.map(song => (
 			<p>{JSON.stringify(song)}</p>

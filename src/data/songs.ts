@@ -9,5 +9,5 @@ const list = [
 
 export const songs = list.map((title) => ({
   title,
-  slug: slug(title),
+  slug: slug(title, {tone: false}),
 }))
