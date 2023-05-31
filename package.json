@@ -10,6 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.5.6"
+    "@astrojs/prefetch": "^0.2.3",
+    "astro": "^2.5.6",
+    "workbox-window": "^7.0.0"
+  },
+  "devDependencies": {
+    "@iconify-json/ph": "^1.1.5",
+    "@unocss/preset-icons": "^0.52.7",
+    "@vite-pwa/astro": "^0.0.5",
+    "unocss": "^0.52.7"
   }
 }
