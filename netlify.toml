@@ -1,6 +1,5 @@
-[build]
-  publish = "dist"
-  command = "pnpm run build"
+[build.environment]
+  NETLIFY_USE_PNPM = "true"
 
 [[headers]]
   for = "/manifest.webmanifest"
