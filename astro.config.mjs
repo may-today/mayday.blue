@@ -15,7 +15,13 @@ export default defineConfig({
     AstroPWA({
       base: '/',
       scope: '/',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+      includeAssets: [
+        'favicon.ico',
+        'apple-touch-icon.png',
+        'mask-icon.svg',
+        'pwa-192x192.png',
+        'pwa-512x512.png',
+      ],
       registerType: 'autoUpdate',
       manifest: {
         name: '五迷歌词本',
