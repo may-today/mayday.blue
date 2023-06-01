@@ -1,6 +1,7 @@
 ---
+import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
-import { getCollection, getEntry } from 'astro:content'
+import { slugify } from '@/utils'
 
 const entries = await getCollection('lyrics')
 ---
@@ -9,7 +10,7 @@ const entries = await getCollection('lyrics')
 	<main>
 		<h1>Lrc</h1>
 		{ entries.map(entry => (
-			<a href={`/song/${entry.slug}`} class="block my-2">{entry.data.title}</a>
+			<a href={`/song/${slugify(entry.slug)}`} class="block my-2">{entry.slug}</a>
 		))}
 	</main>
 </Layout>
