@@ -27,7 +27,7 @@ if (lyricLines[0].text === '') {
 
 <div id="lyric-text" class="leading-loose">
   {lyricLines.map(line => (
-    <p class={line.isHighlight ? 'fg-highlight' : ''}>
+    <p class={line.isHighlight ? 'fg-primary' : ''}>
       {line.text || '\u00a0'}
     </p>
   ))}

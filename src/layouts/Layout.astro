@@ -11,7 +11,7 @@ export interface Props {
 
 const { title } = Astro.props
 
-const pageTitle = title ? `${title} | Mayday.Lyrics` : 'Mayday.Lyrics'
+const pageTitle = title ? `${title} | Mayday.Blue` : 'Mayday.Blue'
 ---
 
 <!DOCTYPE html>
@@ -25,7 +25,8 @@ const pageTitle = title ? `${title} | Mayday.Lyrics` : 'Mayday.Lyrics'
 		<meta name="theme-color" content="#0f0f0f">
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
-		<meta name="description" content="收录五月天的歌曲歌词">
+		<meta name="description" content="Mayday lyrics collection.">
+		{ import.meta.env.HEAD_SCRIPTS ? <Fragment set:html={import.meta.env.HEAD_SCRIPTS} /> : null }
     { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
 		<script src="/src/pwa.ts"></script>
 	</head>
@@ -36,7 +37,7 @@ const pageTitle = title ? `${title} | Mayday.Lyrics` : 'Mayday.Lyrics'
 		<Footer>
 			<slot name="footer-left" slot="footer-left">
 				<a href="/" class="p-2 -ml-2 hv-base">
-					<h1 class="text-sm">Mayday.Lyrics</h1>
+					<h1 class="text-sm">Mayday<span class="fg-primary">.blue</span></h1>
 				</a>
 			</slot>
 			<slot name="footer-right" slot="footer-right" />
