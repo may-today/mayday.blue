@@ -2,6 +2,7 @@
 import { getCollection, getEntry } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
 import LyricText from '@/components/LyricText.astro'
+import TextSizeSwitcher from '@/components/TextSizeSwitcher.astro'
 import { slugify } from '@/utils'
 
 export async function getStaticPaths() {
@@ -31,11 +32,14 @@ const lyric = await getEntry('lyrics', id);
   <div class="max-w-[70ch] mx-auto px-6 py-8">
     <LyricText data={lyric!.body} />
 	</div>
-  <div slot="footer-left" class="flex items-center">
+  <div slot="footer-left" class="flex-1 flex items-center overflow-hidden">
     <a href="/" class="p-2 -ml-2 hv-base">
       <h1 class="text-sm">Lyrics</h1>
     </a>
     <div class="i-ph:caret-right text-sm -ml-1 mr-1" />
-    <div class="text-sm">{title}</div>
+    <div class="text-sm truncate">{title}</div>
+  </div>
+  <div slot="footer-right" class="flex items-center">
+    <TextSizeSwitcher />
   </div>
 </Layout>

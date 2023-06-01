@@ -1,0 +1,43 @@
+<div class="flex rounded border border-base text-sm">
+  <div id="text-reduce" class="button flex items-center justify-center w-7 h-7 border-r border-base">
+    <div class="i-ph:minus" />
+  </div>
+  <div id="text-enlarge" class="button flex items-center justify-center w-7 h-7">
+    <div class="i-ph:plus" />
+  </div>
+</div>
+
+<script>
+const textReduce = document.getElementById('text-reduce')
+const textEnlarge = document.getElementById('text-enlarge')
+const lyricText = document.getElementById('lyric-text')
+const sessionFontSize = sessionStorage.getItem('fontSize') || '1rem'
+
+const sizeStep = ['0.8rem', '1rem', '1.2rem', '1.4rem', '1.6rem', '1.8rem', '2rem']
+
+lyricText?.style.setProperty('font-size', sessionFontSize)
+
+textReduce?.addEventListener('click', () => {
+  if (!lyricText) {
+    return
+  }
+  const currentFontSize = lyricText.style.fontSize
+  const currentFontSizeIndex = sizeStep.indexOf(currentFontSize)
+  if (currentFontSizeIndex > 0) {
+    lyricText.style.fontSize = sizeStep[currentFontSizeIndex - 1]
+    sessionStorage.setItem('fontSize', sizeStep[currentFontSizeIndex - 1])
+  }
+})
+
+textEnlarge?.addEventListener('click', () => {
+  if (!lyricText) {
+    return
+  }
+  const currentFontSize = lyricText.style.fontSize
+  const currentFontSizeIndex = sizeStep.indexOf(currentFontSize)
+  if (currentFontSizeIndex < sizeStep.length - 1) {
+    lyricText.style.fontSize = sizeStep[currentFontSizeIndex + 1]
+    sessionStorage.setItem('fontSize', sizeStep[currentFontSizeIndex + 1])
+  }
+})
+</script>
