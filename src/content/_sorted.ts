@@ -5,7 +5,7 @@ import type { SongMeta, SongGroup } from '@/types'
 const entries = await getCollection('lyrics')
 
 const rawSongsList = entries.map((entry) => ({
-  title: entry.slug as string,
+  title: entry.id.replace('.md', '') as string,
   slug: slugify(entry.slug),
 } as SongMeta))
 

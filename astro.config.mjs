@@ -19,20 +19,22 @@ export default defineConfig({
         presetUno({
           dark: 'media',
         }),
-        presetWebFonts({
-          provider: 'none',
-          fonts: {
-            news: 'Newsreader',
-          }
-        }),
+        // presetWebFonts({
+        //   provider: 'none',
+        //   fonts: {
+        //     news: 'Newsreader',
+        //   }
+        // }),
         presetIcons(),
       ],
       shortcuts: [{
         'bg-base': 'bg-light-50 dark:bg-dark-800',
         'fg-base': 'text-neutral-700 dark:text-neutral-300',
         'fg-emphasis': 'text-dark-900 dark:text-light-900',
+        'fg-highlight': 'text-sky-700 dark:text-sky-300',
         'hv-base': 'transition-colors duration-300 cursor-pointer hover:fg-emphasis',
         'border-base': 'border-light-700 dark:border-dark-200',
+        'bg-blur': 'bg-light-50/85 dark:bg-dark-800/85 backdrop-blur-xl backdrop-saturate-150',
       }],
     }),
     AstroPWA({
@@ -49,7 +51,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       manifest: {
         name: '五迷歌词本',
-        short_name: '五迷歌词本',
+        short_name: '歌词本',
         description: '收录五月天的歌曲歌词',
         theme_color: '#ffffff',
         icons: [

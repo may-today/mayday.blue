@@ -1,34 +1,39 @@
 ---
 import { getCollection, getEntry } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
+import LyricText from '@/components/LyricText.astro'
 import { slugify } from '@/utils'
 
 export async function getStaticPaths() {
   const entries = await getCollection('lyrics')
   return entries.map(entry => ({
     params: { slug: slugify(entry.slug) },
-    props: { title: entry.slug },
+    props: {
+      title: entry.id.replace('.md', ''),
+      id: entry.slug,
+    },
   }))
 }
 
 export interface Props {
 	title: string
+  id: string
   slug: string
 }
 
-const { title } = Astro.props
+const { title, id } = Astro.props
 const { slug } = Astro.params
 
-const lyric = await getEntry('lyrics', title);
+const lyric = await getEntry('lyrics', id);
 ---
 
 <Layout title={title}>
-	<main>
-    <pre>{lyric!.body}</pre>
-	</main>
+  <div class="max-w-[70ch] mx-auto px-6 py-8">
+    <LyricText data={lyric!.body} />
+	</div>
   <div slot="footer-left" class="flex items-center">
     <a href="/" class="p-2 -ml-2 hv-base">
-      <h1 class="font-news text-sm">Mayday</h1>
+      <h1 class="text-sm">Lyrics</h1>
     </a>
     <div class="i-ph:caret-right text-sm -ml-1 mr-1" />
     <div class="text-sm">{title}</div>
