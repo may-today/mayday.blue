@@ -24,7 +24,13 @@ const lyric = await getEntry('lyrics', title);
 
 <Layout title={title}>
 	<main>
-		<h2 class="text-blue">{title}</h2>
     <pre>{lyric!.body}</pre>
 	</main>
+  <div slot="footer-left" class="flex items-center">
+    <a href="/" class="p-2 -ml-2 hv-base">
+      <h1 class="font-news text-sm">Mayday</h1>
+    </a>
+    <div class="i-ph:caret-right text-sm -ml-1 mr-1" />
+    <div class="text-sm">{title}</div>
+  </div>
 </Layout>

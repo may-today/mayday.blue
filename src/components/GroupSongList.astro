@@ -1,0 +1,34 @@
+---
+import type { SongMeta, SongGroup } from '@/types'
+
+interface Props {
+  data: SongGroup[]
+}
+
+const { data } = Astro.props
+---
+
+<div>
+  { data.map(group => (
+    <div class="flex items-start border-b border-base last:border-0">
+      <div class="flex items-center h-12 w-12 text-sm op-50">
+        {group.key}
+      </div>
+      <div class="flex-1">
+        {group.list.map(item => (
+          <a
+            href={`/song/${item.slug}`}
+            class:list={[
+              'flex items-center justify-between h-12',
+              'border-b border-base last:border-0',
+              'hv-base',
+            ]}
+          >
+            <p>{item.title}</p>
+            <div class="i-carbon-arrow-up-right" />
+          </a>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>

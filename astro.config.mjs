@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
-import { presetUno, presetIcons } from 'unocss'
 
+import { presetUno, presetIcons, presetWebFonts } from 'unocss'
 import AstroPWA from '@vite-pwa/astro'
 import yaml from '@rollup/plugin-yaml'
 
@@ -15,7 +15,25 @@ export default defineConfig({
   },
   integrations: [
     UnoCSS({
-      presets: [presetIcons(), presetUno()],
+      presets: [
+        presetUno({
+          dark: 'media',
+        }),
+        presetWebFonts({
+          provider: 'none',
+          fonts: {
+            news: 'Newsreader',
+          }
+        }),
+        presetIcons(),
+      ],
+      shortcuts: [{
+        'bg-base': 'bg-light-50 dark:bg-dark-800',
+        'fg-base': 'text-neutral-700 dark:text-neutral-300',
+        'fg-emphasis': 'text-dark-900 dark:text-light-900',
+        'hv-base': 'transition-colors duration-300 cursor-pointer hover:fg-emphasis',
+        'border-base': 'border-light-700 dark:border-dark-200',
+      }],
     }),
     AstroPWA({
       mode: 'development',

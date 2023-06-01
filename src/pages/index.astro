@@ -1,18 +1,13 @@
 ---
-import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
-import { slugify } from '@/utils'
-
-const entries = await getCollection('lyrics')
+import GroupSongList from '@/components/GroupSongList.astro'
+import { groupedList } from '@/content/_sorted'
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Lrc</h1>
-		{ entries.map(entry => (
-			<a href={`/song/${slugify(entry.slug)}`} class="block my-2">{entry.slug}</a>
-		))}
-	</main>
+<Layout title="Mayday.Lyrics">
+	<div class="max-w-2xl mx-auto px-6 py-8">
+		<GroupSongList data={groupedList} />
+	</div>
 </Layout>
 
 <style>

@@ -4,6 +4,12 @@ dependencies:
   '@astrojs/prefetch':
     specifier: ^0.2.3
     version: 0.2.3
+  '@fontsource/newsreader':
+    specifier: ^5.0.2
+    version: 5.0.2
+  '@unocss/reset':
+    specifier: ^0.52.7
+    version: 0.52.7
   astro:
     specifier: ^2.5.6
     version: 2.5.6
@@ -22,6 +28,9 @@ devDependencies:
     specifier: ^4.1.0
     version: 4.1.0(rollup@2.79.1)
   '@unocss/preset-icons':
+    specifier: ^0.52.7
+    version: 0.52.7
+  '@unocss/preset-web-fonts':
     specifier: ^0.52.7
     version: 0.52.7
   '@vite-pwa/astro':
@@ -1538,6 +1547,10 @@ packages:
     requiresBuild: true
     optional: true
 
+  /@fontsource/newsreader@5.0.2:
+    resolution: {integrity: sha512-z7/B9wQ/D4kl9FG2PG9cJHoyQx2WRi7gN/tM3/DvZamEx0+s8Iij+4S6g2u39tug1a4ydLIwBYOnRxhvVCTiLw==}
+    dev: false
+
   /@iconify-json/ph@1.1.5:
     resolution: {integrity: sha512-iLXq3nohfGge22gL2tZmQ2WHBKkKkIbGWrkuyC8arckS4PWaONyh4A+uDPtSek9QbYDvi9AE2+NxWkNZhANotA==}
     dependencies:
@@ -1970,7 +1983,6 @@ packages:
 
   /@unocss/reset@0.52.7:
     resolution: {integrity: sha512-TJW2BaGGQoh0OSDd22Ti8bZ/Ds3YMGT8aBxNPkcyhesH4fCJeWK+rwsAc5g8CS/wp9OdLS8P4Jy9k2Yg/GfrVQ==}
-    dev: true
 
   /@unocss/scope@0.52.7:
     resolution: {integrity: sha512-J8QMwfbm+lCt3Lpt52NllnXbuICvH8+Njl/L65wN9TfE6gHk0StA5nrEOlOB79R1aOhnRaoqG4MkAvFXK/1dcQ==}

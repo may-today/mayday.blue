@@ -1,8 +1,12 @@
 ---
 import { pwaInfo } from 'virtual:pwa-info'
+import '@unocss/reset/tailwind-compat.css'
+import '@fontsource/newsreader'
+import '@fontsource/newsreader/400-italic.css'
+import Footer from '@/components/Footer.astro'
 
 export interface Props {
-	title: string;
+	title: string
 }
 
 const { title } = Astro.props
@@ -23,21 +27,17 @@ const { title } = Astro.props
     { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
 		<script src="/src/pwa.ts"></script>
 	</head>
-	<body>
-		<slot />
+	<body class="bg-base fg-base flex flex-col h-screen w-screen">
+		<main class="flex-1 overflow-auto">
+			<slot />
+		</main>
+		<Footer>
+			<slot name="footer-left" slot="footer-left">
+				<a href="/" class="p-2 -ml-2 hv-base">
+					<h1 class="font-news text-sm">Mayday.Lyrics</h1>
+				</a>
+			</slot>
+			<slot name="footer-right" slot="footer-right" />
+		</Footer>
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
