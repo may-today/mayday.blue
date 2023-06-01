@@ -1,8 +1,13 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "baseUrl": ".",
+    "strictNullChecks": true,
     "types": [
       "vite-plugin-pwa/client"
-    ]
+    ],
+    "paths": {
+      "@/*": ["src/*"],
+    },
   }
 }

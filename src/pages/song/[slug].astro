@@ -1,0 +1,30 @@
+---
+import { getCollection, getEntry } from 'astro:content'
+import Layout from '@/layouts/Layout.astro'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('lyrics')
+  return entries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { title: entry.data.title },
+  }))
+}
+
+export interface Props {
+	title: string
+  slug: string
+}
+
+const { title } = Astro.props
+const { slug } = Astro.params
+
+const lyric = await getEntry('lyrics', slug as any);
+---
+
+<Layout title={title}>
+	<main>
+		<h2 class="text-blue">{title} - {slug}</h2>
+    <pre>{lyric!.body}</pre>
+    <p>{JSON.stringify(lyric!.data)}</p>
+	</main>
+</Layout>

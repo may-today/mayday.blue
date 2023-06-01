@@ -1,13 +1,7 @@
 import slug from 'limax'
+import allSongs from './all-songs.yml'
 
-const list = [
-  '2012',
-  '叫我第一名',
-  '爱情万岁',
-  '夜访吸血鬼',
-]
-
-export const songs = list.map((title) => ({
+export const songs = allSongs.map((title: string) => ({
   title,
   slug: slug(title, {tone: false}),
 }))

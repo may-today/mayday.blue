@@ -2,12 +2,13 @@ import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
 import { presetUno, presetIcons } from 'unocss'
 
-import prefetch from '@astrojs/prefetch'
 import AstroPWA from '@vite-pwa/astro'
+import yaml from '@rollup/plugin-yaml'
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
+    plugins: [yaml()],
     define: {
       __DATE__: `'${new Date().toISOString()}'`,
     },
@@ -16,7 +17,6 @@ export default defineConfig({
     UnoCSS({
       presets: [presetIcons(), presetUno()],
     }),
-    prefetch(),
     AstroPWA({
       mode: 'development',
       base: '/',

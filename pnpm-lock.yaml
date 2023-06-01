@@ -18,6 +18,9 @@ devDependencies:
   '@iconify-json/ph':
     specifier: ^1.1.5
     version: 1.1.5
+  '@rollup/plugin-yaml':
+    specifier: ^4.1.0
+    version: 4.1.0(rollup@2.79.1)
   '@unocss/preset-icons':
     specifier: ^0.52.7
     version: 0.52.7
@@ -1683,6 +1686,21 @@ packages:
       '@rollup/pluginutils': 5.0.2(rollup@3.23.0)
       magic-string: 0.27.0
       rollup: 3.23.0
+    dev: true
+
+  /@rollup/plugin-yaml@4.1.0(rollup@2.79.1):
+    resolution: {integrity: sha512-wz+8B10tSL1Oxzf7yWIpqD3ksarklM0s5MAC1B98lZogUP0yPVMCT+IftY5R0FQgcw0umohi15sOVG3ubDWlcw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.0.2(rollup@2.79.1)
+      js-yaml: 4.1.0
+      rollup: 2.79.1
+      tosource: 2.0.0-alpha.3
     dev: true
 
   /@rollup/pluginutils@3.1.0(rollup@2.79.1):
@@ -4747,6 +4765,11 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
+
+  /tosource@2.0.0-alpha.3:
+    resolution: {integrity: sha512-KAB2lrSS48y91MzFPFuDg4hLbvDiyTjOVgaK7Erw+5AmZXNq4sFRVn8r6yxSLuNs15PaokrDRpS61ERY9uZOug==}
+    engines: {node: '>=10'}
+    dev: true
 
   /totalist@3.0.1:
     resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}

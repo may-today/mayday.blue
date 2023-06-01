@@ -1,16 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getCollection, getEntry } from 'astro:content'
 
-import { songs } from '../data/songs'
-console.log(songs)
+const entries = await getCollection('lyrics')
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<h1>to</h1>
-		<a href="/page2" rel="prefetch" class="font-bold">page2</a>
-		{ songs.map(song => (
-			<p>{JSON.stringify(song)}</p>
+		<h1>Lrc</h1>
+		{ entries.map(entry => (
+			<a href={`/song/${entry.slug}`} class="block my-2">{entry.data.title}</a>
 		))}
 	</main>
 </Layout>

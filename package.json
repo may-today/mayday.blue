@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.1.5",
+    "@rollup/plugin-yaml": "^4.1.0",
     "@unocss/preset-icons": "^0.52.7",
     "@vite-pwa/astro": "^0.0.5",
     "unocss": "^0.52.7"
