@@ -21,9 +21,9 @@ const lyricLines = data.split('\n').map(line => {
   const toneText = rawText.match(toneTextRegex)?.[1]
   const text = toneText ? rawText.replace(toneTextRegex, '') : rawText
   return { 
-    text: text.replace(/^\!/, '').replaceAll(' ', '\u00a0').trim(),
+    text: text.replace(/^\!/, '').replaceAll('  ', '\u00a0\u00a0').trim(),
     isHighlight,
-    toneText: toneText?.replaceAll(' ', '\u00a0') || undefined,
+    toneText: toneText?.replaceAll('  ', '\u00a0\u00a0') || undefined,
   } as LyricLine
 })
 
@@ -37,7 +37,7 @@ if (lyricLines[0].text === '') {
     <>
       { line.toneText && (
         <div class:list={[
-          'lyric-tone -mb-1 first:mt-0 font-serif op-70 hidden',
+          'lyric-tone -mb-1 first:mt-0 font-serif op-70 hidden break-words',
           line.isHighlight ? 'fg-primary' : '',
         ]}>
           {line.toneText}
