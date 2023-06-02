@@ -11,9 +11,9 @@
 const textReduce = document.getElementById('text-reduce')
 const textEnlarge = document.getElementById('text-enlarge')
 const lyricText = document.getElementById('lyric-text')
-const sessionFontSize = sessionStorage.getItem('fontSize') || '1rem'
+let sessionFontStep = parseInt(sessionStorage.getItem('fontStep') || '1')
 
-const sizeStep = [
+const fontSizeList = [
   '0.8rem',
   '1rem',
   '1.2rem',
@@ -23,45 +23,34 @@ const sizeStep = [
   '2rem',
   '4rem',
   '6rem',
+  '8rem',
 ]
-const sizeBoxMaxSize = {
-  '0.8rem': '48rem',
-  '1rem': '48rem',
-  '1.2rem': '48rem',
-  '1.4rem': '48rem',
-  '1.6rem': '48rem',
-  '1.8rem': '48rem',
-  '2rem': '48rem',
-  '4rem': '100vw',
-  '6rem': '100vw',
-} as Record<string, string>
 
-lyricText?.style.setProperty('font-size', sessionFontSize)
-lyricText?.style.setProperty('max-width', sizeBoxMaxSize[sessionFontSize])
-
-textReduce?.addEventListener('click', () => {
+const setStyle = (fontStep: number) => {
   if (!lyricText) {
     return
   }
-  const currentFontSize = lyricText.style.fontSize
-  const currentFontSizeIndex = sizeStep.indexOf(currentFontSize)
-  if (currentFontSizeIndex > 0) {
-    lyricText.style.fontSize = sizeStep[currentFontSizeIndex - 1]
-    lyricText.style.maxWidth = sizeBoxMaxSize[sizeStep[currentFontSizeIndex - 1]]
-    sessionStorage.setItem('fontSize', sizeStep[currentFontSizeIndex - 1])
+  lyricText.style.fontSize = fontSizeList[fontStep] || '1rem'
+  lyricText.style.maxWidth = fontStep > 6 ? '100vw' : '48rem'
+
+  console.log('fontStep', fontStep, fontSizeList[fontStep] || '1rem', fontStep > 5 ? '100vw' : '48rem')
+
+}
+setStyle(sessionFontStep)
+
+textReduce?.addEventListener('click', () => {
+  if (sessionFontStep > 0) {
+    sessionFontStep -= 1
+    setStyle(sessionFontStep)
+    sessionStorage.setItem('fontStep', sessionFontStep.toString())
   }
 })
 
 textEnlarge?.addEventListener('click', () => {
-  if (!lyricText) {
-    return
-  }
-  const currentFontSize = lyricText.style.fontSize
-  const currentFontSizeIndex = sizeStep.indexOf(currentFontSize)
-  if (currentFontSizeIndex < sizeStep.length - 1) {
-    lyricText.style.fontSize = sizeStep[currentFontSizeIndex + 1]
-    lyricText.style.maxWidth = sizeBoxMaxSize[sizeStep[currentFontSizeIndex + 1]]
-    sessionStorage.setItem('fontSize', sizeStep[currentFontSizeIndex + 1])
+  if (sessionFontStep < fontSizeList.length - 1) {
+    sessionFontStep += 1
+    setStyle(sessionFontStep)
+    sessionStorage.setItem('fontStep', sessionFontStep.toString())
   }
 })
 </script>
