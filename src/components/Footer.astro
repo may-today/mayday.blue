@@ -1,7 +1,8 @@
 <footer class:list={[
-  'fixed bottom-[env(safe-area-inset-bottom)] left-0 right-0',
+  'fixed left-0 right-0 bottom-0',
   'flex items-center justify-between gap-4',
-  'h-14 px-6 bg-blur border-t border-base',
+  'h-[calc(3.5rem+env(safe-area-inset-bottom))] px-6',
+  'bg-blur border-t border-base',
 ]}>
   <slot name="footer-left" />
   <slot name="footer-right" />
