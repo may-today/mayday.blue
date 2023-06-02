@@ -19,13 +19,13 @@ const { data } = Astro.props
           <a
             href={`/song/${item.slug}`}
             class:list={[
-              'flex items-center justify-between h-12',
+              'flex items-center gap-2 h-12',
               'border-b border-base last:border-0',
               'hv-base',
             ]}
           >
             <p>{item.title}</p>
-            <div class="i-carbon-arrow-up-right" />
+            {item.meta.banlam && <div class="badge w-5 h-5">闽</div>}
           </a>
         ))}
       </div>

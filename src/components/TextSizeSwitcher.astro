@@ -1,8 +1,8 @@
-<div class="flex rounded border border-base text-sm">
-  <div id="text-reduce" class="button flex items-center justify-center w-7 h-7 border-r border-base">
+<div class="flex rounded-md border border-base text-sm overflow-hidden">
+  <div id="text-reduce" class="button fcc w-8 h-7.5 border-r border-base">
     <div class="i-ph:minus" />
   </div>
-  <div id="text-enlarge" class="button flex items-center justify-center w-7 h-7">
+  <div id="text-enlarge" class="button fcc w-8 h-7.5">
     <div class="i-ph:plus" />
   </div>
 </div>
@@ -13,7 +13,17 @@ const textEnlarge = document.getElementById('text-enlarge')
 const lyricText = document.getElementById('lyric-text')
 const sessionFontSize = sessionStorage.getItem('fontSize') || '1rem'
 
-const sizeStep = ['0.8rem', '1rem', '1.2rem', '1.4rem', '1.6rem', '1.8rem', '2rem']
+const sizeStep = [
+  '0.8rem',
+  '1rem',
+  '1.2rem',
+  '1.4rem',
+  '1.6rem',
+  '1.8rem',
+  '2rem',
+  '4rem',
+  '6rem',
+]
 
 lyricText?.style.setProperty('font-size', sessionFontSize)
 

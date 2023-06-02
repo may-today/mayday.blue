@@ -7,6 +7,7 @@ const entries = await getCollection('lyrics')
 const rawSongsList = entries.map((entry) => ({
   title: entry.id.replace('.md', '') as string,
   slug: slugify(entry.slug),
+  meta: entry.data,
 } as SongMeta))
 
 const generateGroupedList = (songsList: SongMeta[]) => {

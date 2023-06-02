@@ -1,0 +1,17 @@
+<div class="flex rounded-md border border-base text-base overflow-hidden">
+  <div id="tone-switch" class="button fcc w-7.5 h-7.5">
+    <div class="i-ph:ear" />
+  </div>
+</div>
+
+<script>
+const toneSwitchButton = document.getElementById('tone-switch')
+const lyricText = document.getElementById('lyric-text')
+const toneTexts = document.querySelectorAll('.lyric-tone')
+
+toneSwitchButton?.addEventListener('click', () => {
+  toneTexts.forEach(toneText => {
+    toneText.classList.toggle('hidden')
+  })
+})
+</script>

@@ -6,17 +6,24 @@ interface Props {
 interface LyricLine {
   text: string
   isHighlight: boolean
+  toneText?: string
 }
 
 const { data } = Astro.props
 
 const lyricLines = data.split('\n').map(line => {
-  const regix = /^\[\d{2}:\d{2}(\.\d+)?\]/
-  const text = line.replace(regix, '').trim()
-  const isHighlight = text.startsWith('!')
+  // [time](highlight)text [toneText]
+  // [00:11]!我的心内感觉 [guá ê sim-lāi kám-kak]
+  const timeLineRegex = /^\[\d{2}:\d{2}(\.\d+)?\]/
+  const toneTextRegex = /\[([^\]]+)\]$/
+  const rawText = line.replace(timeLineRegex, '').trim()
+  const isHighlight = rawText.startsWith('!')
+  const toneText = rawText.match(toneTextRegex)?.[1]
+  const text = toneText ? rawText.replace(toneTextRegex, '') : rawText
   return { 
-    text: text.replace(/^\!/, ''),
+    text: text.replace(/^\!/, '').replaceAll(' ', '\u00a0').trim(),
     isHighlight,
+    toneText: toneText?.replaceAll(' ', '\u00a0') || undefined,
   } as LyricLine
 })
 
@@ -27,8 +34,18 @@ if (lyricLines[0].text === '') {
 
 <div id="lyric-text" class="leading-loose">
   {lyricLines.map(line => (
-    <p class={line.isHighlight ? 'fg-primary' : ''}>
-      {line.text || '\u00a0'}
-    </p>
+    <>
+      { line.toneText && (
+        <div class:list={[
+          'lyric-tone -mb-1 first:mt-0 font-serif op-70 hidden',
+          line.isHighlight ? 'fg-primary' : '',
+        ]}>
+          {line.toneText}
+        </div>
+      )}
+      <p class={line.isHighlight ? 'fg-primary' : ''}>
+        {line.text || '\u00a0'}
+      </p>
+    </>
   ))}
 </div>

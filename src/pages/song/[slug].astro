@@ -3,7 +3,9 @@ import { getCollection, getEntry } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
 import LyricText from '@/components/LyricText.astro'
 import TextSizeSwitcher from '@/components/TextSizeSwitcher.astro'
+import BanlamToneSwitcher from '@/components/BanlamToneSwitcher.astro'
 import { slugify } from '@/utils'
+import type { SongMeta } from '@/types'
 
 export async function getStaticPaths() {
   const entries = await getCollection('lyrics')
@@ -12,6 +14,7 @@ export async function getStaticPaths() {
     props: {
       title: entry.id.replace('.md', ''),
       id: entry.slug,
+      meta: entry.data,
     },
   }))
 }
@@ -19,10 +22,11 @@ export async function getStaticPaths() {
 export interface Props {
 	title: string
   id: string
+  mata: SongMeta['meta']
   slug: string
 }
 
-const { title, id } = Astro.props
+const { title, id, meta } = Astro.props
 const { slug } = Astro.params
 
 const lyric = await getEntry('lyrics', id);
@@ -38,8 +42,10 @@ const lyric = await getEntry('lyrics', id);
     </a>
     <div class="i-ph:caret-right text-sm -ml-1 mr-1" />
     <div class="text-sm truncate">{title}</div>
+    {meta.banlam && <div class="badge w-5 h-5 ml-1">闽</div>}
   </div>
-  <div slot="footer-right" class="flex items-center">
+  <div slot="footer-right" class="flex items-center gap-2">
+    {meta.banlam && <BanlamToneSwitcher />}
     <TextSizeSwitcher />
   </div>
 </Layout>
