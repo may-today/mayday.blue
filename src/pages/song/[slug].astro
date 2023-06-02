@@ -33,7 +33,7 @@ const lyric = await getEntry('lyrics', id);
 ---
 
 <Layout title={title}>
-  <div class="max-w-[70ch] mx-auto px-6 py-8">
+  <div id="lyric-text" class="mx-auto px-6 py-8">
     <LyricText data={lyric!.body} />
 	</div>
   <div slot="footer-left" class="flex-1 flex items-center overflow-hidden">
