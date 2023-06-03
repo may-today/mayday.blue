@@ -42,7 +42,7 @@ if (lyricLines[0].text === '') {
     <div class="py-[0.3em]">
       { line.toneText && (
         <p class:list={[
-          'lyric-tone first:mt-0 font-serif op-70 hidden break-words',
+          'lyric-tone mb-[0.2em] leading-tight font-serif op-70 hidden break-words',
           line.isHighlight ? 'fg-primary' : '',
         ]}>
           {line.toneText}
@@ -50,7 +50,7 @@ if (lyricLines[0].text === '') {
       )}
       { line.toneText2 && (
         <p class:list={[
-          'lyric-tone2 first:mt-0 font-serif op-70 hidden break-words',
+          'lyric-tone2 mb-[0.2em] leading-tight font-serif op-70 hidden break-words',
           line.isHighlight ? 'fg-primary' : '',
         ]}>
           {line.toneText2}
