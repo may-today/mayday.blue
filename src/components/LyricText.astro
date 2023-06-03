@@ -37,28 +37,28 @@ if (lyricLines[0].text === '') {
 }
 ---
 
-<div class="leading-loose">
+<div class="leading-snug">
   {lyricLines.map(line => (
-    <>
+    <div class="py-[0.3em]">
       { line.toneText && (
-        <div class:list={[
-          'lyric-tone -mb-1 first:mt-0 font-serif op-70 hidden break-words',
+        <p class:list={[
+          'lyric-tone first:mt-0 font-serif op-70 hidden break-words',
           line.isHighlight ? 'fg-primary' : '',
         ]}>
           {line.toneText}
-        </div>
+        </p>
       )}
       { line.toneText2 && (
-        <div class:list={[
-          'lyric-tone2 -mb-1 first:mt-0 font-serif op-70 hidden break-words',
+        <p class:list={[
+          'lyric-tone2 first:mt-0 font-serif op-70 hidden break-words',
           line.isHighlight ? 'fg-primary' : '',
         ]}>
           {line.toneText2}
-        </div>
+        </p>
       )}
       <p class={line.isHighlight ? 'fg-primary' : ''}>
         {line.text || '\u00a0'}
       </p>
-    </>
+    </div>
   ))}
 </div>
