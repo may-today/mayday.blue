@@ -7,23 +7,28 @@ interface LyricLine {
   text: string
   isHighlight: boolean
   toneText?: string
+  toneText2?: string
 }
 
 const { data } = Astro.props
 
 const lyricLines = data.split('\n').map(line => {
-  // [time](highlight)text [toneText]
-  // [00:11]!我的心内感觉 [guá ê sim-lāi kám-kak]
+  // [time](highlight)text [toneText(|toneText2)]
+  // [00:11]!我的心内感觉 [Gua e sim-lai kam-kak|wa e xin nai gan ga]
   const timeLineRegex = /^\[\d{2}:\d{2}(\.\d+)?\]/
   const toneTextRegex = /\[([^\]]+)\]$/
   const rawText = line.replace(timeLineRegex, '').trim()
   const isHighlight = rawText.startsWith('!')
-  const toneText = rawText.match(toneTextRegex)?.[1]
+  const toneTextRaw = rawText.match(toneTextRegex)?.[1]
+  const hasToneText2 = toneTextRaw?.includes('|')
+  const toneText = hasToneText2 ? toneTextRaw?.split('|')[0] : toneTextRaw
+  const toneText2 = hasToneText2 ? toneTextRaw?.split('|')[1] : undefined
   const text = toneText ? rawText.replace(toneTextRegex, '') : rawText
   return { 
     text: text.replace(/^\!/, '').replaceAll('  ', '\u00a0\u00a0').trim(),
     isHighlight,
     toneText: toneText?.replaceAll('  ', '\u00a0\u00a0') || undefined,
+    toneText2: toneText2?.replaceAll('  ', '\u00a0\u00a0') || undefined,
   } as LyricLine
 })
 
@@ -41,6 +46,14 @@ if (lyricLines[0].text === '') {
           line.isHighlight ? 'fg-primary' : '',
         ]}>
           {line.toneText}
+        </div>
+      )}
+      { line.toneText2 && (
+        <div class:list={[
+          'lyric-tone2 -mb-1 first:mt-0 font-serif op-70 hidden break-words',
+          line.isHighlight ? 'fg-primary' : '',
+        ]}>
+          {line.toneText2}
         </div>
       )}
       <p class={line.isHighlight ? 'fg-primary' : ''}>

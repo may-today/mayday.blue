@@ -35,12 +35,14 @@ export default defineConfig({
         'fg-lighter': 'text-neutral-400 dark:text-neutral-500',
         'fg-emphasis': 'text-dark-900 dark:text-light-900',
         'fg-primary': 'text-sky-700 dark:text-sky-300',
+        'bg-primary': 'bg-sky-500/10 dark:bg-sky-300/10',
         'hv-base': 'transition-colors duration-300 cursor-pointer hover:fg-emphasis',
         'border-base': 'border-light-700 dark:border-dark-200',
         'bg-blur': 'bg-light-50/85 dark:bg-dark-800/85 backdrop-blur-xl backdrop-saturate-150',
         'fcc': 'flex items-center justify-center',
         'button': 'bg-base-100 hv-base hover:bg-base-200',
-        'badge': 'fcc text-xs rounded bg-base-200 text-dark/40 dark:text-light/50'
+        'button-highlight': 'fg-primary bg-primary hover:bg-primary! hover:fg-primary!',
+        'badge': 'fcc text-xs rounded bg-base-200 text-dark/40 dark:text-light/50',
       }],
     }),
     AstroPWA({
