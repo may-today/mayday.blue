@@ -2,8 +2,9 @@ export interface SongMeta {
   title: string
   slug: string
   meta: {
-    banlam: string
+    banlam: boolean
   }
+  content: string
 }
 
 export interface SongGroup {

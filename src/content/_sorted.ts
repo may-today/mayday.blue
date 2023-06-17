@@ -8,11 +8,11 @@ const rawSongsList = entries.map((entry) => ({
   title: entry.id.replace('.md', '') as string,
   slug: slugify(entry.slug),
   meta: entry.data,
+  content: entry.body
 } as SongMeta))
 
 const generateGroupedList = (songsList: SongMeta[]) => {
   const groupedDict = {} as Record<string, SongMeta[]>
-  // group by first letter and sort
   songsList.forEach((song) => {
     const firstLetter = song.slug[0].toUpperCase()
     if (Number.isInteger(Number(firstLetter))) {

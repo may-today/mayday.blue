@@ -15,6 +15,7 @@ export async function getStaticPaths() {
       title: entry.id.replace('.md', ''),
       id: entry.slug,
       meta: entry.data,
+      content: entry.body,
     },
   }))
 }
@@ -22,8 +23,8 @@ export async function getStaticPaths() {
 export interface Props {
 	title: string
   id: string
-  mata: SongMeta['meta']
-  slug: string
+  meta: SongMeta['meta']
+  content: string
 }
 
 const { title, id, meta } = Astro.props
