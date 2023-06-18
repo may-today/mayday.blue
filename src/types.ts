@@ -2,7 +2,7 @@ export interface SongMeta {
   title: string
   slug: string
   meta: {
-    banlam: boolean
+    banlam?: boolean
   }
   content: string
 }
