@@ -40,7 +40,7 @@ const parseContent = (content: string) => {
 const generateGroupedList = (songsList: SongMeta[], generateDetail: boolean) => {
   const groupedDict = {} as Record<string, SongMeta[]>
   songsList.forEach((song) => {
-    const currentSong = { ...song}
+    const currentSong = { ...song }
     const firstLetter = currentSong.slug[0].toUpperCase()
     if (generateDetail) {
       currentSong.detail = parseContent(currentSong.content)
@@ -68,5 +68,16 @@ const generateGroupedList = (songsList: SongMeta[], generateDetail: boolean) => 
   return grouped
 }
 
+const generateDetailDict = (songsList: SongMeta[]) => {
+  const dict = {} as Record<string, SongMeta>
+  songsList.forEach((song) => {
+    const currentSong = { ...song }
+    currentSong.detail = parseContent(currentSong.content)
+    dict[song.slug] = currentSong
+  })
+  return dict
+}
+
 export const groupedList = generateGroupedList(rawSongsList, false)
 export const groupedListWithDetail = generateGroupedList(rawSongsList, true)
+export const detailDict = generateDetailDict(rawSongsList)
