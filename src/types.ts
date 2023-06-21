@@ -2,6 +2,7 @@ export interface SongMeta {
   title: string
   slug: string
   meta: {
+    year?: number
     banlam?: boolean
   }
   content: string
