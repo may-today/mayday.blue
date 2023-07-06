@@ -3,9 +3,11 @@ export interface SongMeta {
   slug: string
   meta: {
     year?: number
+    album?: string
     banlam?: boolean
+    length?: number
   }
-  content: string
+  content?: string
   detail?: LyricLine[]
 }
 
