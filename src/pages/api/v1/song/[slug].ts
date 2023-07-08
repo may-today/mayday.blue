@@ -1,7 +1,7 @@
-import { getCollection, getEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
 import type { APIRoute } from 'astro'
 import { slugify } from '@/utils'
-import { detailDict } from '@/content/_sorted'
+import { detailDict } from '@/content/_parse'
 
 export const get: APIRoute = ({ params, request }) => {
   const slug = params.slug || '';
@@ -11,7 +11,6 @@ export const get: APIRoute = ({ params, request }) => {
       body: '{}'
     }
   }
-  delete detail.content
   return {
     body: JSON.stringify(detail)
   }

@@ -1,6 +1,6 @@
 import { getCollection } from 'astro:content'
 import { slugify } from '@/utils'
-import type { SongMeta, SongGroup, LyricLine } from '@/types'
+import type { SongMeta, SongGroup, LyricLine, SongStorage, SongDetail } from '@/types'
 
 const entries = await getCollection('lyrics')
 
@@ -9,7 +9,19 @@ const rawSongsList = entries.map((entry) => ({
   slug: slugify(entry.slug),
   meta: entry.data,
   content: entry.body
-} as SongMeta))
+} as SongStorage))
+
+const parseStorageToMeta = (raw: SongStorage) => {
+  const firstLetter = raw.slug[0].toUpperCase()
+  const index = Number.isInteger(Number(firstLetter)) ? '#' : firstLetter
+  return {
+    title: raw.title,
+    slug: raw.slug,
+    index,
+    meta: raw.meta,
+    detail: parseContent(raw.content)
+  } as SongDetail
+}
 
 const parseContent = (content: string) => {
   const lyricLines = content.split('\n').map(line => {
@@ -37,14 +49,11 @@ const parseContent = (content: string) => {
   return lyricLines
 }
 
-const generateGroupedList = (songsList: SongMeta[], generateDetail: boolean) => {
-  const groupedDict = {} as Record<string, SongMeta[]>
+const generateGroupedList = (songsList: SongStorage[]) => {
+  const groupedDict = {} as Record<string, SongStorage[]>
   songsList.forEach((song) => {
     const currentSong = { ...song }
     const firstLetter = currentSong.slug[0].toUpperCase()
-    if (generateDetail) {
-      currentSong.detail = parseContent(currentSong.content)
-    }
     if (Number.isInteger(Number(firstLetter))) {
       if (!groupedDict['#']) {
         groupedDict['#'] = []
@@ -68,16 +77,14 @@ const generateGroupedList = (songsList: SongMeta[], generateDetail: boolean) => 
   return grouped
 }
 
-const generateDetailDict = (songsList: SongMeta[]) => {
-  const dict = {} as Record<string, SongMeta>
-  songsList.forEach((song) => {
-    const currentSong = { ...song }
-    currentSong.detail = parseContent(currentSong.content)
-    dict[song.slug] = currentSong
+const generateDetailDict = (detailList: SongDetail[]) => {
+  const detailDict = {} as Record<string, SongDetail>
+  detailList.forEach((song) => {
+    detailDict[song.slug] = song
   })
-  return dict
+  return detailDict
 }
 
-export const groupedList = generateGroupedList(rawSongsList, false)
-export const groupedListWithDetail = generateGroupedList(rawSongsList, true)
-export const detailDict = generateDetailDict(rawSongsList)
+export const groupedList = generateGroupedList(rawSongsList)
+export const detailList = rawSongsList.map(parseStorageToMeta).sort((a, b) => a.slug.localeCompare(b.slug))
+export const detailDict = generateDetailDict(detailList)

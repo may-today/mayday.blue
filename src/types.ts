@@ -4,11 +4,17 @@ export interface SongMeta {
   meta: {
     year?: number
     album?: string
-    banlam?: boolean
+    banlam: boolean
     length?: number
   }
-  content?: string
-  detail?: LyricLine[]
+}
+
+export type SongStorage = SongMeta & {
+  content: string
+}
+
+export type SongDetail = SongMeta & {
+  detail: LyricLine[]
 }
 
 export interface LyricLine {
@@ -21,5 +27,5 @@ export interface LyricLine {
 
 export interface SongGroup {
   key: string
-  list: SongMeta[]
+  list: SongStorageMeta[]
 }

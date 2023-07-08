@@ -1,8 +1,8 @@
 import type { APIRoute } from 'astro'
-import { groupedListWithDetail } from '@/content/_sorted'
+import { detailList } from '@/content/_parse'
 
 export const get: APIRoute = async({params, request}) => {
   return {
-    body: JSON.stringify(groupedListWithDetail),
+    body: JSON.stringify(detailList),
   };
 }
