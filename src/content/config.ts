@@ -7,9 +7,15 @@ const lyricCollection = defineCollection({
     album: z.string().optional(),
     banlam: z.boolean().default(false),
     length: z.number().optional(),
+    light: z.boolean().default(false),
   }),
+})
+
+const lightCollection = defineCollection({
+  type: 'content',
 })
 
 export const collections = {
   'lyrics': lyricCollection,
+  'lights': lightCollection,
 }

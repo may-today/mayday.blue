@@ -6,6 +6,7 @@ export interface SongMeta {
     album?: string
     banlam: boolean
     length?: number
+    light: boolean
   }
 }
 
