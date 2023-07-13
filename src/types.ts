@@ -28,5 +28,5 @@ export interface LyricLine {
 
 export interface SongGroup {
   key: string
-  list: SongStorageMeta[]
+  list: SongStorage[]
 }
