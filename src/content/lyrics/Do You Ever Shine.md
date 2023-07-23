@@ -4,12 +4,12 @@ album: 五月天 人生无限公司 Life Live
 length: 290
 ---
 [00:00.000]
-[00:02]!Do you ever shine?
-[00:05]!Do you ever shine?
+[00:02]!Do you ever shine
+[00:05]!Do you ever shine
 [00:07]!Do it or die
 [00:13]!你安全带 马上解开
 [00:16]!你有亮点 现在亮出来
-[00:21]!Do you ever shine?
+[00:21]!Do you ever shine
 [00:24]
 [00:30]你可以是推倒世界 最后的骨牌
 [00:33]也可以是宇宙拼图 缺的那一块
@@ -21,12 +21,12 @@ length: 290
 [00:47]来一场狂恋
 [00:48]世界就是细节 要怎么改变
 [00:51]一点一点 就等你一念
-[00:55]!Do you ever try?
-[00:58]!Do you ever try?
+[00:55]!Do you ever try
+[00:58]!Do you ever try
 [01:00]!Do it or die
 [01:06]!每个最好 最坏时代
 [01:09]!都迫出来几个天才
-[01:13]!Do you ever try?
+[01:13]!Do you ever try
 [01:18]
 [03:00]难道你想 没什么意外
 [03:05]发一生的呆
@@ -35,8 +35,8 @@ length: 290
 [03:17]把自己淘汰
 [03:20]到老了才发现 小宇宙
 [03:25]根本就没打开
-[03:28]!Do you ever shine?
-[03:31]!Do you ever shine?
+[03:28]!Do you ever shine
+[03:31]!Do you ever shine
 [03:33]!Do it or die
 [03:39]!每个最好 最坏时代
 [03:42]!都是你的华丽舞台
