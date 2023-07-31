@@ -1,3 +1,8 @@
+---
+author: Diu
+song: lian-ai-ing
+origin: true
+---
 0,off4
 300,red4
 700,whi4

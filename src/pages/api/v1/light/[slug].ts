@@ -7,6 +7,7 @@ export const get: APIRoute = ({ params, props, request }) => {
   const entry = props.entry || {};
   return {
     body: JSON.stringify({
+      meta: entry.data || null,
       raw: entry.body || null,
     })
   }

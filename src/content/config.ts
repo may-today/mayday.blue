@@ -13,6 +13,12 @@ const lyricCollection = defineCollection({
 
 const lightCollection = defineCollection({
   type: 'content',
+  schema: z.object({
+    author: z.string().optional(),
+    song: z.string().optional(),
+    origin: z.boolean().default(false),
+    length: z.number().optional(),
+  }),
 })
 
 export const collections = {
