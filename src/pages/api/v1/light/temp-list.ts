@@ -4,6 +4,10 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
+        title: '香水 (Live)',
+        author: '临山吟风Rikae',
+        path: 'xiang-shui-live',
+      }, {
         title: '玫瑰少年',
         author: '可能？不存在的',
         path: 'mei-gui-shao-nian-ke-neng',
