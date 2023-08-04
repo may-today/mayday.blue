@@ -7,6 +7,8 @@ export const get: APIRoute = () => {
         title: '如果我们不曾相遇',
         author: '娃娃机',
         path: 'ru-guo-wo-men-bu-ceng-xiang-yu',
+        song: 'ru-guo-wo-men-bu-ceng-xiang-yu',
+        origin: true,
       }, {
         title: '倔强 (Live fly to 2023)',
         author: 'Bean Li',
