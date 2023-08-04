@@ -15,7 +15,7 @@ export const get: APIRoute = () => {
         origin: true,
       }, {
         title: '任意门',
-        author: '阿俊',
+        author: '阿俊Antonio',
         path: 'ren-yi-men',
         song: 'ren-yi-men',
         origin: true,
@@ -27,7 +27,7 @@ export const get: APIRoute = () => {
         origin: true,
       }, {
         title: '玫瑰少年',
-        author: '阿俊',
+        author: '阿俊Antonio',
         path: 'mei-gui-shao-nian',
         song: 'mei-gui-shao-nian',
         origin: true,
