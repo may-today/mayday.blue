@@ -4,6 +4,16 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
+        title: '第二人生',
+        author: 'Mayei',
+        path: 'di-er-ren-sheng',
+        song: 'di-er-ren-sheng',
+        origin: true,
+      }, {
+        title: '孙悟空 (Live)',
+        author: 'wm阿洪、Diu',
+        path: 'sun-wu-kong-live',
+      }, {
         title: '笑忘歌',
         author: 'Mayei',
         path: 'xiao-wang-ge',
