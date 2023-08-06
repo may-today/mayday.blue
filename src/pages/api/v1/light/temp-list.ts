@@ -4,6 +4,12 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
+        title: '少年他的奇幻漂流',
+        author: '娃娃机',
+        path: 'shao-nian-ta-de-qi-huan-piao-liu',
+        song: 'shao-nian-ta-de-qi-huan-piao-liu',
+        origin: true,
+      }, {
         title: '转眼',
         author: '娃娃机',
         path: 'zhuan-yan',
