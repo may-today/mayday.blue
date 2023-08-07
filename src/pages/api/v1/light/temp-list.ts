@@ -4,6 +4,10 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
+        title: '五月天诺亚方舟',
+        author: '懒咩咩&Ryan',
+        path: 'wu-yue-tian-nuo-ya-fang-zhou',
+      }, {
         title: '人生海海',
         author: '临山吟风Rikae',
         path: 'ren-sheng-hai-hai',
@@ -35,7 +39,7 @@ export const get: APIRoute = () => {
         origin: true,
       }, {
         title: '孙悟空 (Live)',
-        author: 'wm阿洪、Diu',
+        author: 'wm阿洪&Diu',
         path: 'sun-wu-kong-live',
       }, {
         title: '笑忘歌',
