@@ -4,9 +4,9 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
-        title: '五月天诺亚方舟',
+        title: '五月天诺亚方舟绿色版',
         author: '懒咩咩&Ryan',
-        path: 'wu-yue-tian-nuo-ya-fang-zhou',
+        path: 'wu-yue-tian-nuo-ya-fang-zhou-lv-se-ban',
       }, {
         title: '人生海海',
         author: '临山吟风Rikae',
