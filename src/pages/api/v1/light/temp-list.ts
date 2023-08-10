@@ -4,6 +4,12 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
+        title: '透露',
+        author: '北海道布丁奶',
+        path: 'tou-lu',
+        song: 'tou-lu',
+        origin: true,
+      }, {
         title: '夜访吸血鬼 (Live fly to 2023)',
         author: '蜂鸟',
         path: 'ye-fang-xi-xue-gui-live2023',
