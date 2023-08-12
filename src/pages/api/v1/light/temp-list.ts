@@ -8,6 +8,20 @@ export const get: APIRoute = () => {
         author: 'CheerXu',
         path: 'yong-yuan-de-yong-yuan-yong-gan-chu-tou-tian',
       }, {
+        title: '透露',
+        author: '北海道布丁奶',
+        path: 'tou-lu',
+        song: 'tou-lu',
+        origin: true,
+      }, {
+        title: '夜访吸血鬼 (Live fly to 2023)',
+        author: '蜂鸟',
+        path: 'ye-fang-xi-xue-gui-live2023',
+      }, {
+        title: '五月天诺亚方舟绿色版',
+        author: '懒咩咩&Ryan',
+        path: 'wu-yue-tian-nuo-ya-fang-zhoulse-ban',
+      }, {
         title: '人生海海',
         author: '临山吟风Rikae',
         path: 'ren-sheng-hai-hai',
@@ -39,7 +53,7 @@ export const get: APIRoute = () => {
         origin: true,
       }, {
         title: '孙悟空 (Live)',
-        author: 'wm阿洪、Diu',
+        author: 'wm阿洪&Diu',
         path: 'sun-wu-kong-live',
       }, {
         title: '笑忘歌',
