@@ -4,7 +4,7 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
-        title: '2012',
+        title: '2012 (Live)',
         author: 'BGG',
         path: '2012live',
       }, {
