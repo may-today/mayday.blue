@@ -4,6 +4,10 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
+        title: '五月天诺亚方舟(台版)',
+        author: 'CheerXu',
+        path: 'wu-yue-tian-nuo-ya-fang-zhou-tai-ban',
+      }, {
         title: '五月天DNA创造演唱会',
         author: '叶智文',
         path: 'wu-yue-tian-dna-chuang-zao-yan-chang-hui',
@@ -30,9 +34,9 @@ export const get: APIRoute = () => {
         author: '蜂鸟',
         path: 'ye-fang-xi-xue-gui-live2023',
       }, {
-        title: '五月天诺亚方舟绿色版',
+        title: '五月天诺亚方舟(内地版)',
         author: '懒咩咩&Ryan',
-        path: 'wu-yue-tian-nuo-ya-fang-zhoulse-ban',
+        path: 'wu-yue-tian-nuo-ya-fang-zhou-nei-di-ban',
       }, {
         title: '人生海海',
         author: '临山吟风Rikae',
