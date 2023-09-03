@@ -4,7 +4,11 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
-        title: '五月天诺亚方舟(台版)',
+        title: '盛夏光年 (Live)',
+        author: '豆豆',
+        path: 'shang-xia-guang-nian-live',
+      }, {
+        title: '五月天诺亚方舟 (台版)',
         author: 'CheerXu',
         path: 'wu-yue-tian-nuo-ya-fang-zhou-tai-ban',
       }, {
@@ -16,7 +20,7 @@ export const get: APIRoute = () => {
         author: 'BGG',
         path: '2012live',
       }, {
-        title: '温柔（还你自由版）',
+        title: '温柔 (还你自由版)',
         author: '可能？不存在的',
         path: 'wen-rou-hai-ni-zi-you',
       }, {
@@ -34,7 +38,7 @@ export const get: APIRoute = () => {
         author: '蜂鸟',
         path: 'ye-fang-xi-xue-gui-live2023',
       }, {
-        title: '五月天诺亚方舟(内地版)',
+        title: '五月天诺亚方舟 (内地版)',
         author: '懒咩咩&Ryan',
         path: 'wu-yue-tian-nuo-ya-fang-zhou-nei-di-ban',
       }, {
@@ -44,7 +48,7 @@ export const get: APIRoute = () => {
         song: 'ren-sheng-hai-hai',
         origin: true,
       }, {
-        title: 'OAOA（现在就是永远）',
+        title: 'OAOA (现在就是永远)',
         author: 'JZH',
         path: 'oaoa-xian-zai-jiu-shi-yong-yuan',
         song: 'oaoa-xian-zai-jiu-shi-yong-yuan',
