@@ -6,7 +6,7 @@ export const get: APIRoute = () => {
       {
         title: '盛夏光年 (Live)',
         author: '豆豆',
-        path: 'shang-xia-guang-nian-live',
+        path: 'sheng-xia-guang-nian-live',
       }, {
         title: '五月天诺亚方舟 (台版)',
         author: 'CheerXu',
