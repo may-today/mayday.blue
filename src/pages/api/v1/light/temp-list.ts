@@ -4,6 +4,46 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
+        title: 'OAOA (现在就是永远) (Live)',
+        author: '豆豆',
+        path: 'oaoa-xian-zai-jiu-shi-yong-yuan-live-dou-dou',
+      }, {
+        title: '温柔 (Live)',
+        author: '豆豆',
+        path: 'wen-rou-live-dou-dou',
+      }, {
+        title: '孙悟空 (Live)',
+        author: '豆豆',
+        path: 'sun-wu-kong-live-dou-dou',
+      }, {
+        title: '盛夏光年 (Live)',
+        author: '豆豆',
+        path: 'sheng-xia-guang-nian-live-dou-dou',
+      }, {
+        title: '派对动物 + 离开地球表面 (live in the sky)',
+        author: '豆豆',
+        path: 'pai-dui-dong-wu-li-kai-di-qiu-biao-mian-liveinthesky',
+      }, {
+        title: '诺亚方舟 (live in the sky)',
+        author: '豆豆',
+        path: 'nuo-ya-fang-zhou-liveinthesky',
+      }, {
+        title: '你的神曲',
+        author: '豆豆',
+        path: 'ni-de-shen-qu',
+      }, {
+        title: '玫瑰少年 (Live)',
+        author: '豆豆',
+        path: 'mei-gui-shao-nian-live-dou-dou',
+      }, {
+        title: '恋爱ing (Live)',
+        author: '豆豆',
+        path: 'lian-ai-inglive-dou-dou',
+      }, {
+        title: '爱情万岁 (Live)',
+        author: '豆豆',
+        path: 'ai-qing-wan-sui-live-dou-dou',
+      }, {
         title: '盛夏光年 (Live)',
         author: '豆豆',
         path: 'sheng-xia-guang-nian-live',
