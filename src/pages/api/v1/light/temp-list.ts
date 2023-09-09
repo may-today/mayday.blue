@@ -16,10 +16,6 @@ export const get: APIRoute = () => {
         author: '豆豆',
         path: 'sun-wu-kong-live-dou-dou',
       }, {
-        title: '盛夏光年 (Live)',
-        author: '豆豆',
-        path: 'sheng-xia-guang-nian-live-dou-dou',
-      }, {
         title: '派对动物 + 离开地球表面 (live in the sky)',
         author: '豆豆',
         path: 'pai-dui-dong-wu-li-kai-di-qiu-biao-mian-liveinthesky',
