@@ -4,6 +4,10 @@ export const get: APIRoute = () => {
   return {
     body: JSON.stringify([
       {
+        title: '终结孤单 (live fly to 2022)',
+        author: 'Pre-Hello',
+        path: 'zhong-jie-gu-dan-liveflyto2022',
+      }, {
         title: '拥抱 (Live) (天空之城 复出演唱会)',
         author: 'Ichigo_',
         path: 'yong-bao-tian-kong-zhi-cheng-live',
