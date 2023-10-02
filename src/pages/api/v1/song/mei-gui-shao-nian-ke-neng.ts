@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro'
 import { detailDict } from '@/content/_parse'
 
-export const get: APIRoute = () => {
+export const GET: APIRoute = () => {
   const slug = 'mei-gui-shao-nian';
   const detail = detailDict[slug]
   if (!detail) {
@@ -9,7 +9,5 @@ export const get: APIRoute = () => {
       body: '{}'
     }
   }
-  return {
-    body: JSON.stringify(detail)
-  }
+  return new Response(JSON.stringify(detail))
 }

@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro'
 import { slugify } from '@/utils'
 import { detailDict } from '@/content/_parse'
 
-export const get: APIRoute = ({ params, request }) => {
+export const GET: APIRoute = ({ params, request }) => {
   const slug = params.slug || '';
   const detail = detailDict[slug]
   if (!detail) {
@@ -11,9 +11,7 @@ export const get: APIRoute = ({ params, request }) => {
       body: '{}'
     }
   }
-  return {
-    body: JSON.stringify(detail)
-  }
+  return new Response(JSON.stringify(detail))
 };
 
 export async function getStaticPaths() {
