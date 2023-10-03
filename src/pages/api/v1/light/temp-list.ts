@@ -38,6 +38,8 @@ export const GET: APIRoute = () => {
       title: '你的神曲',
       author: '豆豆',
       path: 'ni-de-shen-qu',
+      song: 'ni-de-shen-qu',
+      origin: true,
     }, {
       title: '玫瑰少年 (Live)',
       author: '豆豆',

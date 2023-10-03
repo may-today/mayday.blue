@@ -35,6 +35,9 @@ const lyricLines = data.split('\n').map(line => {
 if (lyricLines[0].text === '') {
   lyricLines.shift()
 }
+if (lyricLines[lyricLines.length - 1].text === '') {
+  lyricLines.pop()
+}
 ---
 
 <div class="leading-snug">
