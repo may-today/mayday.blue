@@ -40,12 +40,12 @@ if (lyricLines[lyricLines.length - 1].text === '') {
 }
 ---
 
-<article class="leading-loose">
+<article class="leading-snug">
   {lyricLines.map(line => (
     <>
       { line.toneText && (
         <p class:list={[
-          'lyric-tone mt-[0.3em] leading-tight font-serif op-70 hidden break-words',
+          'lyric-tone my-[0.2em] leading-tight font-serif op-70 hidden break-words',
           line.isHighlight ? 'fg-primary' : '',
         ]}>
           {line.toneText}
@@ -53,13 +53,16 @@ if (lyricLines[lyricLines.length - 1].text === '') {
       )}
       { line.toneText2 && (
         <p class:list={[
-          'lyric-tone2 mt-[0.3em] leading-tight font-serif op-70 hidden break-words',
+          'lyric-tone2 my-[0.2em] leading-tight font-serif op-70 hidden break-words',
           line.isHighlight ? 'fg-primary' : '',
         ]}>
           {line.toneText2}
         </p>
       )}
-      <p class={line.isHighlight ? 'fg-primary' : ''}>
+      <p class:list={[
+        'mb-[0.6em]',
+        line.isHighlight ? 'fg-primary' : '',
+      ]}>
         {line.text || '\u00a0'}
       </p>
     </>
