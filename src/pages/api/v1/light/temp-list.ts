@@ -3,6 +3,10 @@ import type { APIRoute } from 'astro'
 export const GET: APIRoute = () => {
   return new Response(JSON.stringify([
     {
+      title: '一颗苹果 (Life Live)',
+      author: '一有',
+      path: 'yi-ke-pin-guo-lifelive',
+    }, {
       title: '终结孤单 (live fly to 2022)',
       author: 'Pre-Hello',
       path: 'zhong-jie-gu-dan-liveflyto2022',
