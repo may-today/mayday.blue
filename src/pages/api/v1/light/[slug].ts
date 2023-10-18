@@ -3,7 +3,6 @@ import type { APIRoute } from 'astro'
 import { slugify } from '@/utils'
 
 export const GET: APIRoute = ({ params, props, request }) => {
-  const slug = params.slug || '';
   const entry = props.entry || {};
   return new Response(JSON.stringify({
     meta: entry.data || null,

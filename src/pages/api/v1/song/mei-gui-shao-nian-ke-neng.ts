@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro'
-import { detailDict } from '@/content/_parse'
+import { detailDict } from '@/content/_parse/song'
 
 export const GET: APIRoute = () => {
   const slug = 'mei-gui-shao-nian';

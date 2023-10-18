@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content'
 import type { APIRoute } from 'astro'
 import { slugify } from '@/utils'
-import { detailDict } from '@/content/_parse'
+import { detailDict } from '@/content/_parse/song'
 
 export const GET: APIRoute = ({ params, request }) => {
   const slug = params.slug || '';

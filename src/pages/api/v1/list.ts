@@ -1,11 +1,10 @@
 import type { APIRoute } from 'astro'
-import { detailList } from '@/content/_parse'
+import { metaList } from '@/content/_parse/song'
 import type { SongMeta } from '@/types';
 
-export const GET: APIRoute = async({params, request}) => {
-  return new Response(JSON.stringify(detailList.map(item => {
+export const GET: APIRoute = async() => {
+  return new Response(JSON.stringify(metaList.map(item => {
     const meta = { ...item } as (SongMeta & { detail?: any })
-    delete meta.detail
     return meta
   })))
 }

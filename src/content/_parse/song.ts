@@ -11,16 +11,25 @@ const rawSongsList = entries.map((entry) => ({
   content: entry.body
 } as SongStorage))
 
-const parseStorageToMeta = (raw: SongStorage) => {
+function parseStorageToMeta(raw: SongStorage, showDetail: false): SongMeta
+function parseStorageToMeta(raw: SongStorage, showDetail: true): SongDetail
+function parseStorageToMeta(raw: SongStorage, showDetail: boolean): SongMeta | SongDetail {
   const firstLetter = raw.slug[0].toUpperCase()
   const index = Number.isInteger(Number(firstLetter)) ? '#' : firstLetter
-  return {
+  const songMeta = {
     title: raw.title,
     slug: raw.slug,
     index,
     meta: raw.meta,
-    detail: parseContent(raw.content)
-  } as SongDetail
+  } as SongMeta
+  if (showDetail) {
+    return {
+      ...songMeta,
+      detail: parseContent(raw.content),
+    } as SongDetail
+  } else {
+    return songMeta
+  }
 }
 
 const parseContent = (content: string) => {
@@ -77,14 +86,25 @@ const generateGroupedList = (songsList: SongStorage[]) => {
   return grouped
 }
 
-const generateDetailDict = (detailList: SongDetail[]) => {
-  const detailDict = {} as Record<string, SongDetail>
+const generateDict = <T extends SongMeta | SongDetail>(detailList: T[]) => {
+  const detailDict = {} as Record<string, T>
   detailList.forEach((song) => {
     detailDict[song.slug] = song
   })
   return detailDict
 }
 
+const generateNameSlugDict = (rawSongsList: SongStorage[]) => {
+  const nameSlugDict = {} as Record<string, string>
+  rawSongsList.forEach((song) => {
+    nameSlugDict[song.title] = song.slug
+  })
+  return nameSlugDict
+}
+
 export const groupedList = generateGroupedList(rawSongsList)
-export const detailList = rawSongsList.map(parseStorageToMeta).sort((a, b) => a.slug.localeCompare(b.slug))
-export const detailDict = generateDetailDict(detailList)
+export const metaList = rawSongsList.map(item => parseStorageToMeta(item, false)).sort((a, b) => a.slug.localeCompare(b.slug))
+export const detailList = rawSongsList.map(item => parseStorageToMeta(item, true)).sort((a, b) => a.slug.localeCompare(b.slug))
+export const metaDict = generateDict(metaList)
+export const detailDict = generateDict(detailList)
+export const nameSlugDict = generateNameSlugDict(rawSongsList)
