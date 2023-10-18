@@ -1,6 +1,8 @@
 ---
+import { format } from 'date-fns'
 import Layout from '@/layouts/Layout.astro'
 import { songStatList } from '@/content/_parse/setlist'
+import BarChart from '@/components/BarChart.astro'
 import type { SongStat } from '@/types'
 
 export async function getStaticPaths() {
@@ -17,12 +19,19 @@ export interface Props {
 }
 
 const { data } = Astro.props
+const timeArr = data.metaList.map(meta => format(meta.date, 'yyyy-MM'))
 ---
 
 <Layout title={data.title}>
   <div class="max-w-3xl mx-auto px-6 py-8">
     <h1 class="text-lg font-semibold">{data.title}</h1>
     <main class="flex flex-col gap-12 mt-8">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-semibold">概况</h3>
+        </div>
+        <BarChart stat={timeArr.join(',')} />
+      </div>
       <div>
         <div class="flex items-center justify-between mb-4">
           <h3 class="font-semibold">点歌场次</h3>

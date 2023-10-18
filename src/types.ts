@@ -38,6 +38,7 @@ export interface SetList {
   endTime?: string
   place: string
   guest: string | null
+  recorder?: string
   list: string[]
 }
 

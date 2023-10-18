@@ -68,8 +68,8 @@ const props = Astro.props
                 'hv-base',
               ]}
             >
-              <span class="w-2em text-xs fg-lighter">{item.index}</span>
-              <p>{item.title}</p>
+              <span class="w-2em text-xs fg-lighter shrink-0">{item.index}</span>
+              <p class="line-clamp-2">{item.title}</p>
               <p class="text-xs fg-lighter">{item.remark}</p>
             </a>
           )}
@@ -80,8 +80,8 @@ const props = Astro.props
                 'border-b border-base last:border-0',
               ]}
             >
-              <span class="w-2em text-xs fg-lighter"></span>
-              <p class="text-sm fg-lighter">{item.text}</p>
+              <span class="w-2em text-xs fg-lighter shrink-0"></span>
+              <p class="text-sm fg-lighter line-clamp-2">{item.text}</p>
               <p class="text-xs fg-lighter">{item.remark}</p>
             </div>
           )}
@@ -122,11 +122,16 @@ const props = Astro.props
         <p class:list={['text-sm', props.data.guest ? '' : 'fg-lighter']}>{props.data.guest || '无'}</p>
       </div>
     </div>
+    { props.data.recorder && (
+      <div class="mt-8">
+        <p class="text-xs fg-lighter op-50 text-right">歌单记录：{props.data.recorder}</p>
+      </div>
+    )}
 	</div>
   <div slot="footer-left" class="flex-1 flex items-center overflow-hidden">
     <div class="flex flex-col h-full justify-center">
       <span class="text-xs fg-lighter">{format(props.data.date, 'yyyyMMdd')} · {props.data.place}</span>
-      <h1 class="text-sm">{props.data.tour}</h1>
+      <h1 class="text-sm line-clamp-2">{props.data.tour}</h1>
     </div>
   </div>
   <div slot="footer-right" class="flex items-center gap-2">

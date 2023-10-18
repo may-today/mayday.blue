@@ -29,8 +29,9 @@ const setListCollection = defineCollection({
     tour: z.string(),
     startTime: z.string().optional(),
     endTime: z.string().optional(),
-    guest: z.string().nullable(),
     place: z.string(),
+    guest: z.string().nullable(),
+    recorder: z.string().optional(),
     list: z.array(z.string()),
   }),
 })

@@ -8,7 +8,7 @@ const generateRequestedSongRawList = (id: string, set: SetList) => {
   const requestedSongList: RequestedSongMeta[] = []
   set.list.forEach(item => {
     const [title, remark] = item.split('|', 2).map(i => i.trim())
-    if (remark !== '点歌') {
+    if (!remark?.includes('点歌')) {
       return
     }
     const slug = nameSlugDict[title]
