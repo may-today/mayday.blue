@@ -30,3 +30,41 @@ export interface SongGroup {
   key: string
   list: SongStorage[]
 }
+
+export interface SetList {
+  date: Date
+  tour: string
+  startTime?: string
+  endTime?: string
+  place: string
+  guest: string | null
+  list: string[]
+}
+
+export type SetListSongMeta = {
+  type: 'song'
+  index: number
+  title: string
+  slug: string
+  remark?: string
+} | {
+  type: 'text'
+  text: string
+  remark?: string
+}
+
+export interface RequestedSongMeta {
+  title: string
+  slug: string
+  setId: string
+  date: Date
+  tour: string
+  place: string
+}
+
+export interface SongStat {
+  slug: string
+  title: string
+  amount: number
+  metaList: RequestedSongMeta[]
+}

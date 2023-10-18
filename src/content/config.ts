@@ -1,4 +1,5 @@
 import { z, defineCollection } from 'astro:content'
+import type { SetList } from '@/types'
 
 const lyricCollection = defineCollection({
   type: 'content',
@@ -21,7 +22,21 @@ const lightCollection = defineCollection({
   }),
 })
 
+const setListCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    date: z.date(),
+    tour: z.string(),
+    startTime: z.string().optional(),
+    endTime: z.string().optional(),
+    guest: z.string().nullable(),
+    place: z.string(),
+    list: z.array(z.string()),
+  }),
+})
+
 export const collections = {
   'lyrics': lyricCollection,
   'lights': lightCollection,
+  'setlists': setListCollection,
 }

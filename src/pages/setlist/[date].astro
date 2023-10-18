@@ -1,0 +1,142 @@
+---
+import { getCollection } from 'astro:content'
+import { format } from 'date-fns'
+import Layout from '@/layouts/Layout.astro'
+import { nameSlugDict } from '@/content/_parse/song'
+import type { SetList, SetListSongMeta } from '@/types'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('setlists')
+  const parseSetList = (rawList: string[]) => {
+    const setList: SetListSongMeta[] = []
+    let songNum = 0
+    rawList.forEach(item => {
+      const [title, remark] = item.split('|', 2).map(i => i.trim())
+      const slug = nameSlugDict[title]
+      if (slug) {
+        const setItem = {
+          type: 'song',
+          index: ++songNum,
+          title,
+          slug,
+          remark,
+        } as SetListSongMeta
+        setList.push(setItem)
+      } else {
+        const setItem = {
+          type: 'text',
+          text: title,
+          remark,
+        } as SetListSongMeta
+        setList.push(setItem)
+      }
+    })
+    return setList
+  }
+  return entries.map((entry, index) => ({
+    params: { date: entry.id },
+    props: {
+      data: entry.data,
+      setList: parseSetList(entry.data.list),
+      prev: index === 0 ? null : entries[index - 1].id,
+      next: index === entries.length - 1 ? null : entries[index + 1].id,
+    },
+  }))
+}
+
+export interface Props {
+	data: SetList
+  setList: SetListSongMeta[]
+  prev: string | null
+  next: string | null
+}
+
+const props = Astro.props
+---
+
+<Layout title={`${format(props.data.date, 'yyyyMMdd')}-${props.data.tour}`}>
+  <div class="max-w-3xl mx-auto px-6 py-8">
+    <div>
+      {props.setList.map(item => (
+        <>
+          { item.type === 'song' && (
+            <a
+              href={`/song/${item.slug}`}
+              class:list={[
+                'flex items-center gap-2 h-12',
+                'border-b border-base last:border-0',
+                'hv-base',
+              ]}
+            >
+              <span class="w-2em text-xs fg-lighter">{item.index}</span>
+              <p>{item.title}</p>
+              <p class="text-xs fg-lighter">{item.remark}</p>
+            </a>
+          )}
+          { item.type === 'text' && (
+            <div
+              class:list={[
+                'flex items-center gap-2 h-12',
+                'border-b border-base last:border-0',
+              ]}
+            >
+              <span class="w-2em text-xs fg-lighter"></span>
+              <p class="text-sm fg-lighter">{item.text}</p>
+              <p class="text-xs fg-lighter">{item.remark}</p>
+            </div>
+          )}
+        </>
+      ))}
+    </div>
+    <div class="mt-12">
+      <h3 class="mb-4 font-semibold">更多信息</h3>
+      <div
+        class:list={[
+          'flex items-center gap-2 h-12',
+          'border-b border-base last:border-0',
+        ]}
+      >
+        <span class="w-60px text-sm fg-lighter">地点</span>
+        <p class="text-sm">{props.data.place}</p>
+      </div>
+      { props.data.startTime && props.data.endTime && (
+        <div
+          class:list={[
+            'flex items-center gap-2 h-12',
+            'border-b border-base last:border-0',
+          ]}
+        >
+          <span class="w-60px text-sm fg-lighter">时间</span>
+          <p class="text-sm">
+            {props.data.startTime} - {props.data.endTime}  
+          </p>
+        </div>
+      )}
+      <div
+        class:list={[
+          'flex items-center gap-2 h-12',
+          'border-b border-base last:border-0',
+        ]}
+      >
+        <span class="w-60px text-sm fg-lighter">嘉宾</span>
+        <p class:list={['text-sm', props.data.guest ? '' : 'fg-lighter']}>{props.data.guest || '无'}</p>
+      </div>
+    </div>
+	</div>
+  <div slot="footer-left" class="flex-1 flex items-center overflow-hidden">
+    <div class="flex flex-col h-full justify-center">
+      <span class="text-xs fg-lighter">{format(props.data.date, 'yyyyMMdd')} · {props.data.place}</span>
+      <h1 class="text-sm">{props.data.tour}</h1>
+    </div>
+  </div>
+  <div slot="footer-right" class="flex items-center gap-2">
+    <div class="flex rounded-md border border-base text-sm overflow-hidden">
+      <a href={props.prev} class="button fcc w-8 h-7.5 border-r border-base" class:list={[props.prev ? '' : 'disabled']}>
+        <div class="i-ph:caret-left" />
+      </a>
+      <a href={props.next} class="button fcc w-8 h-7.5" class:list={[props.next ? '' : 'disabled']}>
+        <div class="i-ph:caret-right" />
+      </a>
+    </div>
+  </div>
+</Layout>
