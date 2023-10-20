@@ -4,7 +4,6 @@ startTime: 18:38
 endTime: 22:08
 place: 台湾高雄
 guest: null
-recorder: 顺顺
 list:
   - '2012'
   - 叫我第一名
@@ -22,7 +21,7 @@ list:
   - VCR
   - 拥抱
   - 三个傻瓜
-  - 轧车|+喊麦
+  - 轧车
   - 派对动物
   - 离开地球表面
   - 温柔
@@ -30,9 +29,11 @@ list:
   - VCR
   - OAOA（现在就是永远）
   - 第二人生
-  - Talking + 感谢名单
-  - 孙悟空|+放手 Feat.Energy
-  - 某年某月某一天+有些事现在不做一辈子都不会做了|Feat.Energy
+  - Talking
+  - 孙悟空|Feat.Energy
+  - 放手|Feat.Energy
+  - 某年某月某一天|Feat.Energy
+  - 有些事现在不做一辈子都不会做了|Feat.Energy
   - 有你的将来|点歌
   - 抓狂|点歌
   - 终结孤单|点歌
