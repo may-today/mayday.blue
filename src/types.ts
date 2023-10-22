@@ -46,7 +46,7 @@ export type SetListSongMeta = {
   type: 'song'
   index: number
   title: string
-  slug: string
+  slug?: string
   remark?: string
 } | {
   type: 'text'
