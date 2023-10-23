@@ -1,12 +1,11 @@
 ---
-import { format } from 'date-fns'
 import Layout from '@/layouts/Layout.astro'
-import { songStatList } from '@/content/_parse/setlist'
-import BarChart from '@/components/BarChart.astro'
+import { allSongStatList } from '@/content/_parse/setlist'
+import BarChart from '@/components/BarChart'
 import type { SongStat } from '@/types'
 
 export async function getStaticPaths() {
-  return songStatList.map(stat => ({
+  return allSongStatList.map(stat => ({
     params: { slug: stat.slug },
     props: {
       data: stat,
@@ -19,25 +18,24 @@ export interface Props {
 }
 
 const { data } = Astro.props
-const timeArr = data.metaList.map(meta => format(meta.date, 'yyyy-MM'))
 ---
 
 <Layout title={data.title}>
   <div class="max-w-3xl mx-auto px-6 py-8">
     <h1 class="text-lg font-semibold">{data.title}</h1>
     <main class="flex flex-col gap-12 mt-8">
-      <div>
+      <!-- <div>
         <div class="flex items-center justify-between mb-4">
           <h3 class="font-semibold">概况</h3>
         </div>
-        <BarChart stat={timeArr.join(',')} />
-      </div>
+        <BarChart client:only />
+      </div> -->
       <div>
         <div class="flex items-center justify-between mb-4">
-          <h3 class="font-semibold">点歌场次</h3>
-          <span class="text-sm fg-lighter">{data.amount}</span>
+          <h3 class="font-semibold">出现场次</h3>
+          <span class="text-sm fg-lighter">{data.allList.length}</span>
         </div>
-        {data.metaList.map(meta => (
+        {data.allList.map(meta => (
           <a
             href={`/setlist/${meta.setId}`}
             class:list={[
@@ -46,8 +44,9 @@ const timeArr = data.metaList.map(meta => format(meta.date, 'yyyy-MM'))
             ]}
           >
             <span class="w-60px text-sm fg-lighter text-right">{meta.setId}</span>
-            <span class="w-60px text-sm fg-lighter text-right">{meta.place}</span>
+            <span class="w-70px text-xs fg-lighter text-right">{meta.place}</span>
             <p class="flex-1 text-sm truncate">{meta.tour}</p>
+            { meta.requested && <span class="badge px-1">点歌</span> }
           </a>
         ))}
       </div>
@@ -55,7 +54,7 @@ const timeArr = data.metaList.map(meta => format(meta.date, 'yyyy-MM'))
 	</div>
   <div slot="footer-left" class="flex-1 flex items-center overflow-hidden">
     <a href="/stats" class="p-2 -ml-2 hv-base">
-      <h1 class="text-sm">点歌统计Demo</h1>
+      <h1 class="text-sm">统计</h1>
     </a>
     <div class="i-ph:caret-right text-sm -ml-1 mr-1" />
     <div class="text-sm truncate">{data.title}</div>

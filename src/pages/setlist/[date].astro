@@ -21,6 +21,7 @@ export async function getStaticPaths() {
           title,
           slug,
           remark,
+          requested: remark?.includes('点歌')
         } as SetListSongMeta
         setList.push(setItem)
       } else {
@@ -148,6 +149,11 @@ const props = Astro.props
     </div>
   </div>
   <div slot="footer-right" class="flex items-center gap-2">
+    <div class="flex rounded-md border border-base text-sm overflow-hidden">
+      <a href='.' class="button fcc w-7.5 h-7.5" class:list={[props.prev ? '' : 'disabled']}>
+        <div class="i-ph:list" />
+      </a>
+    </div>
     <div class="flex rounded-md border border-base text-sm overflow-hidden">
       <a href={props.prev} class="button fcc w-8 h-7.5 border-r border-base" class:list={[props.prev ? '' : 'disabled']}>
         <div class="i-ph:caret-left" />

@@ -4,6 +4,7 @@ import UnoCSS from 'unocss/astro'
 import { presetUno, presetIcons, presetWebFonts } from 'unocss'
 import AstroPWA from '@vite-pwa/astro'
 import yaml from '@rollup/plugin-yaml'
+import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +15,7 @@ export default defineConfig({
     },
   },
   integrations: [
+    react(),
     UnoCSS({
       presets: [
         presetUno({

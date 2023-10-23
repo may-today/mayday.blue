@@ -42,21 +42,27 @@ export interface SetList {
   list: string[]
 }
 
-export type SetListSongMeta = {
+export type SetListSongItem = {
   type: 'song'
   index: number
   title: string
   slug?: string
   remark?: string
-} | {
+  requested: boolean
+}
+
+export type SetListTextItem = {
   type: 'text'
   text: string
   remark?: string
 }
 
-export interface RequestedSongMeta {
+export type SetListSongMeta = SetListSongItem | SetListTextItem
+
+export type SetListSongItemDetail = {
   title: string
   slug: string
+  requested: boolean
   setId: string
   date: Date
   tour: string
@@ -66,6 +72,6 @@ export interface RequestedSongMeta {
 export interface SongStat {
   slug: string
   title: string
-  amount: number
-  metaList: RequestedSongMeta[]
+  allList: SetListSongItemDetail[]
+  requestedList: SetListSongItemDetail[]
 }
