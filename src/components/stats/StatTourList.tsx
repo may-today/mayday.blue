@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import clsx from 'clsx'
+import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import { allSongStatList } from '@/content/_parse/setlist'
 import type { SongStat } from '@/types'
 
@@ -8,27 +9,40 @@ interface Props {
 }
 
 export default ({ data }: Props) => {
-  const [sortBy, setSortBy] = useState<'all' | 'requested'>('all')
-  const sortedList = useMemo(() => {
-    return allSongStatList.sort((a, b) => {
-      if (sortBy === 'all') {
-        return b.allList.length - a.allList.length
-      } else {
-        return b.requestedList.length - a.requestedList.length
-      }
-    })
-  }, [sortBy])
+  const [filter, setFilter] = useState<'all' | 'requested'>('all')
+  const filterList = useMemo(() => {
+    if (filter === 'all') {
+      return data.allList
+    } else {
+      return data.requestedList
+    }
+  }, [filter])
 
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <h3 className="font-semibold">出现场次</h3>
-          <span className="badge px-1.5 py-0.5">{data.allList.length}</span>
+          <span className="badge px-1.5 py-0.5">{filterList.length}</span>
         </div>
+        <ToggleGroup.Root
+          className="fcc rounded-lg border border-base p-1"
+          type="single"
+          aria-label="select filter"
+          value={filter}
+          onValueChange={(value: 'all' | 'requested') => setFilter(value)}
+        >
+          <ToggleGroup.Item value="requested" aria-label="filter requested">
+            点歌
+          </ToggleGroup.Item>
+          <ToggleGroup.Item value="all" aria-label="filter all">
+            全部
+          </ToggleGroup.Item>
+        </ToggleGroup.Root>
       </div>
-      {data.allList.map(meta => (
+      {filterList.map(meta => (
         <a
+          key={meta.setId}
           href={`/setlist/${meta.setId}`}
           className={clsx([
             'flex items-center gap-2 h-12',

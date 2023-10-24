@@ -3,7 +3,7 @@
   @apply border border-base rounded-md;
 }
 
-[data-radix-collection-item] {
+[role='menuitem'][data-radix-collection-item] {
   @apply px-3 py-2;
   @apply hv-base rounded-md;
   --at-apply: 'focus:outline-0';
