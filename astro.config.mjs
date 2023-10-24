@@ -5,6 +5,7 @@ import { presetUno, presetIcons, presetWebFonts } from 'unocss'
 import AstroPWA from '@vite-pwa/astro'
 import yaml from '@rollup/plugin-yaml'
 import react from '@astrojs/react'
+import transformerDirectives from '@unocss/transformer-directives'
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,6 +29,9 @@ export default defineConfig({
         //   }
         // }),
         presetIcons(),
+      ],
+      transformers: [
+        transformerDirectives(),
       ],
       shortcuts: [{
         'bg-base': 'bg-light-50 dark:bg-dark-800',

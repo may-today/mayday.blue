@@ -1,7 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { allSongStatList } from '@/content/_parse/setlist'
-import BarChart from '@/components/BarChart'
+import BarChart from '@/components/stats/BarChart'
+import StatTourList from '@/components/stats/StatTourList'
 import type { SongStat } from '@/types'
 
 export async function getStaticPaths() {
@@ -30,26 +31,7 @@ const { data } = Astro.props
         </div>
         <BarChart client:only />
       </div> -->
-      <div>
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="font-semibold">出现场次</h3>
-          <span class="text-sm fg-lighter">{data.allList.length}</span>
-        </div>
-        {data.allList.map(meta => (
-          <a
-            href={`/setlist/${meta.setId}`}
-            class:list={[
-              'flex items-center gap-2 h-12',
-              'border-b border-base last:border-0',
-            ]}
-          >
-            <span class="w-60px text-sm fg-lighter text-right">{meta.setId}</span>
-            <span class="w-70px text-xs fg-lighter text-right">{meta.place}</span>
-            <p class="flex-1 text-sm truncate">{meta.tour}</p>
-            { meta.requested && <span class="badge px-1">点歌</span> }
-          </a>
-        ))}
-      </div>
+      <StatTourList data={data} client:load />
     </main>
 	</div>
   <div slot="footer-left" class="flex-1 flex items-center overflow-hidden">

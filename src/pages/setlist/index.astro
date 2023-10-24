@@ -5,7 +5,7 @@ import Layout from '@/layouts/Layout.astro'
 const entries = await getCollection('setlists')
 ---
 
-<Layout title="点歌统计">
+<Layout title="演唱会歌单">
   <div class="max-w-3xl mx-auto px-6 py-8">
     {entries.map(meta => (
       <a
@@ -22,7 +22,7 @@ const entries = await getCollection('setlists')
     ))}
 	</div>
   <div slot="footer-left" class="flex-1 flex items-center overflow-hidden">
-    <h1 class="text-sm">场次歌单</h1>
+    <h1 class="text-sm">演唱会歌单</h1>
   </div>
   <div slot="footer-right" class="flex items-center gap-2">
     
