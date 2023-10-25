@@ -64,6 +64,7 @@ export type SetListSongItemDetail = {
   slug: string
   requested: boolean
   setId: string
+  setIndex: number
   date: Date
   tour: string
   place: string

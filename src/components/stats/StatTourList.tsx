@@ -42,7 +42,7 @@ export default ({ data }: Props) => {
       </div>
       {filterList.map(meta => (
         <a
-          key={meta.setId}
+          key={`${meta.setId}_${meta.setIndex}`}
           href={`/setlist/${meta.setId}`}
           className={clsx([
             'flex items-center gap-2 h-12',

@@ -6,7 +6,7 @@ const entries = await getCollection('setlists')
 
 const generateSetListSongItemDetailList = (id: string, set: SetList) => {
   const requestedSongList: SetListSongItemDetail[] = []
-  set.list.forEach(item => {
+  set.list.forEach((item, index) => {
     const [title, remark] = item.split('|', 2).map(i => i.trim())
     const slug = nameSlugDict[title]
     if (!slug) {
@@ -17,6 +17,7 @@ const generateSetListSongItemDetailList = (id: string, set: SetList) => {
       slug,
       requested: remark?.includes('点歌'),
       setId: id,
+      setIndex: index,
       date: set.date,
       tour: set.tour,
       place: set.place,
