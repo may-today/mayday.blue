@@ -1,2 +1,4 @@
+@import 'radix/base.css';
+@import 'radix/dialog.css';
 @import 'radix/dropdown-menu.css';
 @import 'radix/toggle-group.css';

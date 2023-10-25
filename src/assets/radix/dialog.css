@@ -1,0 +1,28 @@
+.DialogOverlay {
+  @apply fcc fixed inset-0;
+  --at-apply: 'bg-black/70';
+}
+
+[role='dialog'] {
+  @apply fixed w-md max-w-90vw max-h-90vh bg-base-200 overflow-hidden;
+  @apply rounded-xl border border-dark outline-0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+[role='dialog'][data-state='open'] {
+  animation: anim-scale-in 200ms ease-out;
+}
+
+[role='dialog'][data-state='closed'] {
+  animation: anim-scale-out 200ms ease-in;
+}
+
+.DialogTitle {
+  @apply font-semibold leading-none;
+}
+
+.DialogDescription {
+  @apply text-sm fg-lighter;
+}

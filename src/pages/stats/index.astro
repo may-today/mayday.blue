@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import StatList from '@/components/stats/StatList'
+import AboutDialog from '@/components/AboutDialog'
 ---
 
 <Layout title="点歌统计">
@@ -10,7 +11,8 @@ import StatList from '@/components/stats/StatList'
   <div slot="footer-left" class="flex-1 flex items-center overflow-hidden">
     <h1 class="text-sm">统计</h1>
   </div>
-  <div slot="footer-right" class="flex items-center gap-2">
+  <div slot="footer-right" class="flex items-center">
     <p class="text-xs fg-lighter op-50">统计范围开始自 2020.1</p>
+    <AboutDialog client:load />
   </div>
 </Layout>
