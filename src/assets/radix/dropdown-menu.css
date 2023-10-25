@@ -1,5 +1,5 @@
 [data-radix-menu-content] {
-  @apply p-2 bg-base-100;
+  @apply p-2 bg-dialog;
   @apply border border-base rounded-md;
 }
 
@@ -7,5 +7,5 @@
   @apply px-3 py-2;
   @apply hv-base rounded-md;
   --at-apply: 'focus:outline-0';
-  --at-apply: 'hover:bg-base-200';
+  --at-apply: 'hover:bg-hover';
 }

@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react'
 import clsx from 'clsx'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import { allSongStatList } from '@/content/_parse/setlist'
 import type { SongStat } from '@/types'
 
 interface Props {

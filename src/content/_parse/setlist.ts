@@ -49,3 +49,4 @@ const generateSongStat = (rawList: SetListSongItemDetail[]) => {
 
 export const setListSongDetailList = entries.map(entry => generateSetListSongItemDetailList(entry.id, entry.data)).flat()
 export const allSongStatList = generateSongStat(setListSongDetailList)
+export const allTourDateList = entries.map(entry => entry.data.date).sort((a, b) => a.getTime() - b.getTime())

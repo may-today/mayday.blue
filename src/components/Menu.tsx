@@ -2,7 +2,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
 export default () => (
   <DropdownMenu.Root>
-    <DropdownMenu.Trigger className="button fcc w-7.5 h-7.5 rounded-md border border-base focus:outline-0">
+    <DropdownMenu.Trigger className="button bg-base fcc w-7.5 h-7.5 rounded-md border border-base focus:outline-0">
       <div className="i-ph:list" />
     </DropdownMenu.Trigger>
     <DropdownMenu.Portal>

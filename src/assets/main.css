@@ -1,0 +1,15 @@
+:root {
+  --bg-dialog: #ffffff;
+  --bg-chart-1: rgba(200, 200, 200, 0.3);
+  --bg-chart-2: rgba(14, 165, 233, 0.5);
+  --bg-chart-3: rgba(13, 148, 136, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-dialog: #3c3c3c;
+    --bg-chart-1: rgba(100, 100, 100, 0.3);
+    --bg-chart-2: rgba(125, 211, 252, 0.5);
+    --bg-chart-3: rgba(45, 212, 191, 0.5);
+  }
+}

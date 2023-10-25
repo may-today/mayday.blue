@@ -3,5 +3,5 @@
 }
 
 [role='radio'][data-radix-collection-item][data-state='on'] {
-  @apply bg-base-200 shadow;
+  @apply bg-hover;
 }
