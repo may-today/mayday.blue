@@ -40,9 +40,8 @@ export const pwaConfig = AstroPWA({
     navigateFallback: '/404',
     globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
     navigateFallbackDenylist: [
-      /^\/api/,
-      /^\/setlist/,
-      /^\/stats/,
+      /\/[api,setlist,stats]+\/.*/,
+      /[api,setlist,stats]+\/.*/,
     ],
   },
   devOptions: {
