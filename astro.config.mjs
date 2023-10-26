@@ -69,6 +69,7 @@ export default defineConfig({
         /^\/api/,
         /^\/setlist/,
         /^\/stats/,
+        /^\/404/,
       ],
       registerType: 'autoUpdate',
       manifest: {
