@@ -65,6 +65,11 @@ export default defineConfig({
         'pwa-192x192.png',
         'pwa-512x512.png',
       ],
+      navigateFallbackDenylist: [
+        /^\/api/,
+        /^\/setlist/,
+        /^\/stats/,
+      ],
       registerType: 'autoUpdate',
       manifest: {
         name: 'Mayday.blue',
@@ -92,6 +97,19 @@ export default defineConfig({
         workbox: {
           navigateFallback: '/404',
           globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
+          runtimeCaching: [{
+            handler: 'NetworkOnly',
+            urlPattern: /^\/song/,
+            method: 'POST',
+            options: {
+              backgroundSync: {
+                name: 'MaydayBlueBackgroundSync',
+                options: {
+                  maxRetentionTime: 24 * 60
+                }
+              }
+            }
+          }]
         },
         devOptions: {
           enabled: true,
