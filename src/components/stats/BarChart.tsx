@@ -97,7 +97,7 @@ export default ({ data }: Props) => {
     <div className="h-300px">
       <ResponsiveLine
         data={parsedData}
-        margin={{ top: 20, right: 20, bottom: 40, left: 20 }}
+        margin={{ top: 20, right: 0, bottom: 40, left: 20 }}
         xScale={{
           type: 'time',
           format: '%Y-%m',
