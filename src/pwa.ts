@@ -2,7 +2,7 @@ import { registerSW } from 'virtual:pwa-register'
 
 registerSW({
   immediate: true,
-  onRegisteredSW(swScriptUrl) {
+  onRegisteredSW(swScriptUrl: string) {
     console.log('SW registered: ', swScriptUrl)
   },
   onOfflineReady() {

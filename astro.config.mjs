@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
 
-import { presetUno, presetIcons, presetWebFonts } from 'unocss'
-import AstroPWA from '@vite-pwa/astro'
+import { presetUno, presetIcons } from 'unocss'
 import yaml from '@rollup/plugin-yaml'
 import react from '@astrojs/react'
 import transformerDirectives from '@unocss/transformer-directives'
+import { pwaConfig } from './pwa'
 
 // https://astro.build/config
 export default defineConfig({
@@ -54,68 +54,6 @@ export default defineConfig({
         'badge': 'fcc text-xs rounded bg-base-200 text-dark/40 dark:text-light/50',
       }],
     }),
-    AstroPWA({
-      mode: 'development',
-      base: '/',
-      scope: '/',
-      includeAssets: [
-        'favicon.ico',
-        'apple-touch-icon.png',
-        'mask-icon.svg',
-        'pwa-192x192.png',
-        'pwa-512x512.png',
-      ],
-      navigateFallbackDenylist: [
-        /^\/api/,
-        /^\/setlist/,
-        /^\/stats/,
-      ],
-      registerType: 'autoUpdate',
-      manifest: {
-        name: 'Mayday.blue',
-        short_name: 'MayBlue',
-        description: 'Mayday lyrics collection',
-        theme_color: '#ffffff',
-        icons: [
-          {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable',
-          },
-        ],
-        workbox: {
-          navigateFallback: '/404',
-          globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
-          runtimeCaching: [{
-            handler: 'NetworkOnly',
-            urlPattern: /^\/song/,
-            method: 'POST',
-            options: {
-              backgroundSync: {
-                name: 'MaydayBlueBackgroundSync',
-                options: {
-                  maxRetentionTime: 24 * 60
-                }
-              }
-            }
-          }]
-        },
-        devOptions: {
-          enabled: true,
-          navigateFallbackAllowlist: [/^\/404$/],
-        },
-      },
-    }),
+    pwaConfig,
   ],
 })
