@@ -1,7 +1,7 @@
 import AstroPWA from '@vite-pwa/astro'
 
 export const pwaConfig = AstroPWA({
-  mode: 'development',
+  mode: 'production',
   base: '/',
   scope: '/',
   includeAssets: [
@@ -46,7 +46,7 @@ export const pwaConfig = AstroPWA({
     ],
   },
   devOptions: {
-    enabled: true,
+    enabled: false,
     navigateFallbackAllowlist: [/^\/404$/],
   },
 })
