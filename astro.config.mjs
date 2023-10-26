@@ -97,19 +97,6 @@ export default defineConfig({
         workbox: {
           navigateFallback: '/404',
           globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
-          runtimeCaching: [{
-            handler: 'NetworkOnly',
-            urlPattern: /^\/song/,
-            method: 'POST',
-            options: {
-              backgroundSync: {
-                name: 'MaydayBlueBackgroundSync',
-                options: {
-                  maxRetentionTime: 24 * 60
-                }
-              }
-            }
-          }]
         },
         devOptions: {
           enabled: true,
