@@ -85,8 +85,8 @@ const generateData = (data: SongStat) => {
     allTourTimesData.push({ x: date, y: item.allTour })
   })
   return [
-    { id: '点歌场次', data: requestedData, color: 'var(--bg-chart-3)' },
-    { id: '出现场次', data: allData, color: 'var(--bg-chart-2)' },
+    { id: '点歌次数', data: requestedData, color: 'var(--bg-chart-3)' },
+    { id: '出现次数', data: allData, color: 'var(--bg-chart-2)' },
     { id: '总场次', data: allTourTimesData, color: 'var(--bg-chart-1)' },
   ]
 }
