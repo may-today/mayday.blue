@@ -1,7 +1,8 @@
 import AstroPWA from '@vite-pwa/astro'
 
 export const pwaConfig = AstroPWA({
-  mode: 'production',
+  mode: 'development',
+  strategies: 'injectManifest',
   base: '/',
   scope: '/',
   includeAssets: [
@@ -47,8 +48,8 @@ export const pwaConfig = AstroPWA({
   },
   devOptions: {
     enabled: true,
+    type: 'module',
     navigateFallbackAllowlist: [
-      /^\/song\/.*/,
       /^\/$/
     ],
   },
