@@ -39,9 +39,10 @@ export const pwaConfig = AstroPWA({
   workbox: {
     navigateFallback: null,
     globPatterns: ['**/*.{css,js,html,md}'],
-    navigateFallbackAllowlist: [
-      /^\/song\/.*/,
-      /^\/$/
+    navigateFallbackDenylist: [
+      /\/api/,
+      /\/stats/,
+      /\/setlist/,
     ],
   },
   devOptions: {
