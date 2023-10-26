@@ -42,6 +42,7 @@
     "unocss": "^0.57.1",
     "vite-plugin-pwa": "^0.16.5",
     "workbox-core": "^7.0.0",
-    "workbox-precaching": "^7.0.0"
+    "workbox-precaching": "^7.0.0",
+    "workbox-routing": "^7.0.0"
   }
 }
