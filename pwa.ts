@@ -2,7 +2,6 @@ import AstroPWA from '@vite-pwa/astro'
 
 export const pwaConfig = AstroPWA({
   mode: 'development',
-  // strategies: 'injectManifest',
   base: '/',
   scope: '/',
   includeAssets: [
@@ -37,13 +36,9 @@ export const pwaConfig = AstroPWA({
       },
     ],
   },
-  injectManifest: {
-    globPatterns: ['**/*.{css,js,html,md}', 'index.html'],
-    globIgnores: ['api/**', 'stats/**', 'setlist/**'],
-  },
   workbox: {
     navigateFallback: null,
-    globPatterns: ['**/*.{css,js,html,md}', 'index.html'],
+    globPatterns: ['**/*.{css,html,md}', 'index.html'],
     globIgnores: ['api/**', 'stats/**', 'setlist/**'],
     navigateFallbackDenylist: [
       /\/api/,
