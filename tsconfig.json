@@ -6,7 +6,6 @@
     "jsxImportSource": "react",
     "strictNullChecks": true,
     "types": [
-      "vite-plugin-pwa/client",
       "vite-plugin-pwa/info"
     ],
     "paths": {
