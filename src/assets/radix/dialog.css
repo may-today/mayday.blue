@@ -3,7 +3,7 @@
   --at-apply: 'bg-black/70';
 }
 
-[role='dialog'] {
+.DialogContent[role='dialog'] {
   @apply fixed w-md max-w-90vw max-h-90vh bg-dialog overflow-hidden;
   @apply rounded-xl border border-dark outline-0;
   top: 50%;
@@ -11,11 +11,11 @@
   transform: translate(-50%, -50%);
 }
 
-[role='dialog'][data-state='open'] {
+.DialogContent[role='dialog'][data-state='open'] {
   animation: anim-scale-in 200ms ease-out;
 }
 
-[role='dialog'][data-state='closed'] {
+.DialogContent[role='dialog'][data-state='closed'] {
   animation: anim-scale-out 200ms ease-in;
 }
 

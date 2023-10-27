@@ -7,7 +7,7 @@ export default () => (
     </Dialog.Trigger>
     <Dialog.Portal>
       <Dialog.Overlay className="DialogOverlay" />
-      <Dialog.Content className="DialogContent">
+      <Dialog.Content className="DialogContent radix">
         <div className="flex flex-col space-y-1.5 p-6 pb-3">
           <Dialog.Title className="DialogTitle">关于演唱会歌单</Dialog.Title>
         </div>

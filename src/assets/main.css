@@ -13,3 +13,7 @@
     --bg-chart-3: rgba(45, 212, 191, 0.5);
   }
 }
+
+:focus {
+  outline: none;
+}

@@ -1,0 +1,28 @@
+[data-scope='popover'] {
+  @apply z-20;
+}
+
+[data-scope='popover'][data-part='trigger'] {
+  @apply bg-transparent;
+}
+
+[data-scope='popover'][data-part='content'] {
+  @apply p-2 bg-dialog;
+  @apply border border-base rounded-md overflow-hidden;
+}
+
+[data-scope='popover'][data-part='content'][data-state='open'] {
+  animation: anim-bottom-in 200ms ease-out;
+}
+ 
+[data-scope='popover'][data-part='content'][data-state='closed'] {
+  animation: anim-bottom-out 200ms ease-in;
+}
+
+[data-scope='popover'][data-part='content'] .collection-item {
+  @apply px-3 py-2;
+  @apply hv-base rounded-md;
+  --at-apply: 'focus:outline-0';
+  --at-apply: 'hover:bg-hover';
+}
+
