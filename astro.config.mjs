@@ -22,12 +22,6 @@ export default defineConfig({
         presetUno({
           dark: 'media',
         }),
-        // presetWebFonts({
-        //   provider: 'none',
-        //   fonts: {
-        //     news: 'Newsreader',
-        //   }
-        // }),
         presetIcons(),
       ],
       transformers: [
