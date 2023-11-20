@@ -20,6 +20,10 @@ export default () => (
             <div className="i-ph:chart-bar" />
             <span className="text-sm">统计</span>
           </a>
+          <a href="https://screen.mayday.blue" target="_blank" className="collection-item flex items-center gap-2">
+            <div className="i-ph:projector-screen" />
+            <span className="text-sm">提词器</span>
+          </a>
         </PopoverContent>
       </PopoverPositioner>
     </Portal>
