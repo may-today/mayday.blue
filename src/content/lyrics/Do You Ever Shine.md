@@ -1,6 +1,5 @@
 ---
 year: 2019
-album: 五月天 人生无限公司 Life Live
 length: 290
 ---
 [00:00.000]

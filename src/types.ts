@@ -4,6 +4,8 @@ export interface SongMeta {
   meta: {
     year?: number
     album?: string
+    lyricist?: string
+    composer?: string
     banlam: boolean
     length?: number
     light: boolean

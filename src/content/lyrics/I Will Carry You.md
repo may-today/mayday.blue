@@ -1,6 +1,5 @@
 ---
 year: 2018
-album: I Will Carry You
 length: 221
 ---
 [00:00.000]
