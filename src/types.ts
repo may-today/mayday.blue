@@ -63,7 +63,6 @@ export type SetListTextItem = {
 export type SetListSongMeta = SetListSongItem | SetListTextItem
 
 export type SetListSongItemDetail = {
-  title: string
   slug: string
   requested: boolean
   ending: boolean
@@ -77,7 +76,8 @@ export type SetListSongItemDetail = {
 export interface SongStat {
   slug: string
   title: string
+  allCount: number
+  requestedCount: number
+  endingCount: number
   allList: SetListSongItemDetail[]
-  requestedList: SetListSongItemDetail[]
-  endingList: SetListSongItemDetail[]
 }

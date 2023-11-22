@@ -13,9 +13,9 @@ export default ({ data }: Props) => {
     if (filter === 'all') {
       return data.allList
     } else if (filter === 'requested') {
-      return data.requestedList
+      return data.allList.filter(meta => meta.requested)
     } else if (filter === 'ending') {
-      return data.endingList
+      return data.allList.filter(meta => meta.ending)
     }
     return []
   }, [filter])

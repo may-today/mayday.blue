@@ -7,11 +7,11 @@ export default () => {
   const sortedList = useMemo(() => {
     return allSongStatList.sort((a, b) => {
       if (sortBy === 'all') {
-        return b.allList.length - a.allList.length
+        return b.allCount - a.allCount
       } else if (sortBy === 'requested') {
-        return b.requestedList.length - a.requestedList.length
+        return b.requestedCount - a.requestedCount
       } else if (sortBy === 'ending') {
-        return b.endingList.length - a.endingList.length
+        return b.endingCount - a.endingCount
       } else {
         return a.slug.localeCompare(b.slug)
       }
@@ -81,9 +81,9 @@ export default () => {
           ])}
         >
           <p className="flex-1 text-sm">{item.title}</p>
-          <span className="w-40px text-sm fg-lighter text-center">{item.requestedList.length}</span>
-          <span className="w-40px text-sm fg-lighter text-center">{item.endingList.length}</span>
-          <span className="w-40px text-sm fg-lighter text-center">{item.allList.length}</span>
+          <span className="w-40px text-sm fg-lighter text-center">{item.requestedCount}</span>
+          <span className="w-40px text-sm fg-lighter text-center">{item.endingCount}</span>
+          <span className="w-40px text-sm fg-lighter text-center">{item.allCount}</span>
         </a>
       ))}
     </>
