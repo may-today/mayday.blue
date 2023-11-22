@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
 import AboutDialog from '@/components/AboutDialog'
 
-const entries = await getCollection('setlists')
+const entries = (await getCollection('setlists')).reverse()
 ---
 
 <Layout title="演唱会歌单">

@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content'
 import { nameSlugDict, metaDict } from '@/content/_parse/song'
 import type { SetListSongItemDetail, SetList, SongStat } from '@/types'
 
-const entries = await getCollection('setlists')
+const entries = (await getCollection('setlists')).reverse()
 
 const generateSetListSongItemDetailList = (id: string, set: SetList) => {
   const detailList: SetListSongItemDetail[] = []
