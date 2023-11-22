@@ -16,6 +16,7 @@ const generateSetListSongItemDetailList = (id: string, set: SetList) => {
       title,
       slug,
       requested: remark?.includes('点歌'),
+      ending: set.endingSong ? title === set.endingSong : index === set.list.length - 1,
       setId: id,
       setIndex: index,
       date: set.date,
@@ -37,11 +38,15 @@ const generateSongStat = (rawList: SetListSongItemDetail[]) => {
         title: item.title,
         allList: [],
         requestedList: [],
+        endingList: [],
       }
     }
     slugDict[item.slug].allList.push(item)
     if (item.requested) {
       slugDict[item.slug].requestedList.push(item)
+    }
+    if (item.ending) {
+      slugDict[item.slug].endingList.push(item)
     }
   })
   return Object.values(slugDict).sort((a, b) => (b.allList.length - a.allList.length) || a.slug.localeCompare(b.slug))

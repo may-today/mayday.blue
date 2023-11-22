@@ -8,13 +8,16 @@ interface Props {
 }
 
 export default ({ data }: Props) => {
-  const [filter, setFilter] = useState<'all' | 'requested'>('all')
+  const [filter, setFilter] = useState<'all' | 'requested' | 'ending'>('all')
   const filterList = useMemo(() => {
     if (filter === 'all') {
       return data.allList
-    } else {
+    } else if (filter === 'requested') {
       return data.requestedList
+    } else if (filter === 'ending') {
+      return data.endingList
     }
+    return []
   }, [filter])
 
   return (
@@ -29,10 +32,13 @@ export default ({ data }: Props) => {
           type="single"
           aria-label="select filter"
           value={filter}
-          onValueChange={(value: 'all' | 'requested') => setFilter(value)}
+          onValueChange={(value: 'all' | 'requested' | 'ending') => setFilter(value || 'all')}
         >
           <ToggleGroup.Item value="requested" aria-label="filter requested">
             点歌
+          </ToggleGroup.Item>
+          <ToggleGroup.Item value="ending" aria-label="filter ending">
+            Ending
           </ToggleGroup.Item>
           <ToggleGroup.Item value="all" aria-label="filter all">
             全部
@@ -52,6 +58,7 @@ export default ({ data }: Props) => {
           <span className="w-70px text-xs fg-lighter text-right">{meta.place}</span>
           <p className="flex-1 text-sm truncate">{meta.tour}</p>
           { meta.requested && <span className="badge px-1">点歌</span> }
+          { meta.ending && <span className="badge px-1">Ending</span> }
         </a>
       ))}
     </div>

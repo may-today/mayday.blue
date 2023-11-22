@@ -40,6 +40,7 @@ export interface SetList {
   endTime?: string
   place: string
   guest: string | null
+  endingSong?: string
   recorder?: string
   list: string[]
 }
@@ -65,6 +66,7 @@ export type SetListSongItemDetail = {
   title: string
   slug: string
   requested: boolean
+  ending: boolean
   setId: string
   setIndex: number
   date: Date
@@ -77,4 +79,5 @@ export interface SongStat {
   title: string
   allList: SetListSongItemDetail[]
   requestedList: SetListSongItemDetail[]
+  endingList: SetListSongItemDetail[]
 }

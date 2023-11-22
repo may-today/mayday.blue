@@ -3,13 +3,17 @@ import clsx from 'clsx'
 import { allSongStatList } from '@/content/_parse/setlist'
 
 export default () => {
-  const [sortBy, setSortBy] = useState<'all' | 'requested'>('all')
+  const [sortBy, setSortBy] = useState<'all' | 'requested' | 'ending' | 'name'>('all')
   const sortedList = useMemo(() => {
     return allSongStatList.sort((a, b) => {
       if (sortBy === 'all') {
         return b.allList.length - a.allList.length
-      } else {
+      } else if (sortBy === 'requested') {
         return b.requestedList.length - a.requestedList.length
+      } else if (sortBy === 'ending') {
+        return b.endingList.length - a.endingList.length
+      } else {
+        return a.slug.localeCompare(b.slug)
       }
     })
   }, [sortBy])
@@ -22,7 +26,17 @@ export default () => {
           'border-b border-base last:border-0',
         ])}
       >
-        <p className="flex-1 text-sm"></p>
+        <p className="flex-1 text-sm">
+          <span
+            className={clsx([
+              'p-1 cursor-pointer',
+              sortBy === 'name' ? 'font-semibold fg-base' : 'fg-lighter',
+            ])}
+            onClick={() => setSortBy('name')}
+          >
+            歌曲
+          </span>
+        </p>
         <div className="w-40px text-xs fg-lighter text-center">
           <span
             className={clsx([
@@ -32,6 +46,17 @@ export default () => {
             onClick={() => setSortBy('requested')}
           >
             点歌
+          </span>
+        </div>
+        <div className="w-40px text-xs fg-lighter text-center">
+          <span
+            className={clsx([
+              'p-1 cursor-pointer',
+              sortBy === 'ending' ? 'font-semibold fg-base' : 'fg-lighter',
+            ])}
+            onClick={() => setSortBy('ending')}
+          >
+            Ending
           </span>
         </div>
         <div className="w-40px text-xs fg-lighter text-center">
@@ -57,6 +82,7 @@ export default () => {
         >
           <p className="flex-1 text-sm">{item.title}</p>
           <span className="w-40px text-sm fg-lighter text-center">{item.requestedList.length}</span>
+          <span className="w-40px text-sm fg-lighter text-center">{item.endingList.length}</span>
           <span className="w-40px text-sm fg-lighter text-center">{item.allList.length}</span>
         </a>
       ))}

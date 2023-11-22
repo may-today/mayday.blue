@@ -33,6 +33,7 @@ const setListCollection = defineCollection({
     endTime: z.string().optional(),
     place: z.string(),
     guest: z.string().nullable(),
+    endingSong: z.string().optional(),
     recorder: z.string().optional(),
     list: z.array(z.string()),
   }),
