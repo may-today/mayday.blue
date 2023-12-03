@@ -33,7 +33,7 @@ function parseStorageToMeta(raw: SongStorage, showDetail: boolean): SongMeta | S
 }
 
 const parseContent = (content: string) => {
-  const lyricLines = content.split('\n').map(line => {
+  const lyricLines = content.trim().split('\n').map(line => {
     // [time](highlight)text [toneText(|toneText2)]
     // [00:11]!我的心内感觉 [Gua e sim-lai kam-kak|wa e xin nai gan ga]
     const timeLineRegex = /^\[\d{2}:\d{2}(\.\d+)?\]/
