@@ -7,9 +7,9 @@ export const GET: APIRoute = ({ params, request }) => {
   const slug = params.slug || '';
   const stat = songStatDict[slug]
   if (!stat) {
-    return {
+    return new Response(JSON.stringify({
       body: '{}'
-    }
+    }))
   }
   return new Response(JSON.stringify(stat))
 };

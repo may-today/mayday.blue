@@ -2,9 +2,9 @@
 length: 10843
 ---
 [00:00.000]
-[2:10]2:10 Miss Americana & The Heartbreak Prince
-[2:54]2:54 Cruel Summer
-[9:25]9:25 The Man
+[02:10]2:10 Miss Americana & The Heartbreak Prince
+[02:54]2:54 Cruel Summer
+[09:25]9:25 The Man
 [12:53]12:53 You Need To Calm Down
 [16:36]16:36 Lover
 [20:10]20:10 Fearless
