@@ -61,7 +61,7 @@ const generateDict = <T extends { slug: string }>(detailList: T[]) => {
   return detailDict
 }
 
-export const setListSongDetailList = entries.map(entry => generateSetListSongItemDetailList(entry.id, entry.data)).flat()
+export const setListSongDetailList = entries.map(entry => generateSetListSongItemDetailList(entry.id, entry.data)).flat().sort((a, b) => a.date.getTime() - b.date.getTime())
 export const allSongStatList = generateSongStat(setListSongDetailList)
 export const songStatDict = generateDict(allSongStatList)
 export const allTourDateList = entries.map(entry => entry.data.date).sort((a, b) => a.getTime() - b.getTime())
