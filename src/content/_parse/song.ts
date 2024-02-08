@@ -37,7 +37,7 @@ const parseContent = (content: string) => {
     if (!line) return undefined
     // [time](highlight)text [toneText(|toneText2)]
     // [00:11]!我的心内感觉 [Gua e sim-lai kam-kak|wa e xin nai gan ga]
-    const timeLineRegex = /^\[\d+:\d+\]/
+    const timeLineRegex = /^\[\d+:\d+(\.\d+)?\]/
     const toneTextRegex = /\[([^\]]+)\]$/
     const time = line.match(timeLineRegex)?.[0]
     const timeSecondRaw = Number(time?.match(/\d+:\d+(\.\d+)?/)?.[0].split(':').reduce((acc, cur, i) => acc + Math.floor(Number(cur)) * Math.pow(60, 1 - i), 0))
