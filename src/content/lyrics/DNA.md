@@ -1,6 +1,8 @@
 ---
 year: 2009
 album: DNA
+lyricist: 五月天 阿信
+composer: 五月天 阿信
 length: 167
 ---
 [00:00.000]

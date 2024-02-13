@@ -1,6 +1,8 @@
 ---
 year: 2006
 album: Happy.Birth.Day
+lyricist: 五月天 阿信
+composer: 五月天 阿信
 length: 231
 ---
 [00:00.000]

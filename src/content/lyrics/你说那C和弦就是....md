@@ -1,6 +1,8 @@
 ---
 year: 2016
 album: 自传
+lyricist: 五月天 阿信 / 五月天 玛莎
+composer: 五月天 玛莎
 length: 138
 ---
 [00:00.00]

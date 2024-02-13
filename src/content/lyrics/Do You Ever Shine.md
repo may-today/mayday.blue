@@ -1,5 +1,7 @@
 ---
 year: 2019
+lyricist: 日：小林武史 中：黄伟文
+composer: 五月天 阿信
 length: 290
 ---
 [00:00.000]
