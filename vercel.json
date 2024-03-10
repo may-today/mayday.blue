@@ -35,5 +35,8 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    { "source": "/down", "destination": "https://wx-static.ddiu.site/down/1.png", "permanent": false }
   ]
 }
