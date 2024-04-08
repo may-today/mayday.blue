@@ -1,5 +1,4 @@
 import { z, defineCollection } from 'astro:content'
-import type { SetList } from '@/types'
 
 const lyricCollection = defineCollection({
   type: 'content',
@@ -9,17 +8,6 @@ const lyricCollection = defineCollection({
     banlam: z.boolean().default(false),
     lyricist: z.string().optional(),
     composer: z.string().optional(),
-    length: z.number().optional(),
-    light: z.boolean().default(false),
-  }),
-})
-
-const lightCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    author: z.string().optional(),
-    song: z.string().optional(),
-    origin: z.boolean().default(false),
     length: z.number().optional(),
   }),
 })
@@ -41,6 +29,5 @@ const setListCollection = defineCollection({
 
 export const collections = {
   'lyrics': lyricCollection,
-  'lights': lightCollection,
   'setlists': setListCollection,
 }

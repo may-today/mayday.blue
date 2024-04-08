@@ -65,9 +65,6 @@ const generateGroupedList = (songsList: SongStorage[]) => {
   songsList.forEach((song) => {
     const currentSong = { ...song }
     const firstLetter = currentSong.slug[0].toUpperCase()
-    if (song.title.includes('[场控]')) {
-      return
-    }
     if (Number.isInteger(Number(firstLetter))) {
       if (!groupedDict['#']) {
         groupedDict['#'] = []

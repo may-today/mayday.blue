@@ -4,7 +4,6 @@ album: 第二人生
 lyricist: 五月天 阿信
 composer: 五月天 阿信
 length: 282
-light: true
 ---
 [00:00.000]
 [00:21]我相信 苦涩的眼泪

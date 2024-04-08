@@ -4,7 +4,6 @@ album: 知足 最真杰作选
 lyricist: 五月天 阿信
 composer: 五月天 阿信
 length: 169
-light: true
 ---
 [00:00.000]
 [00:06]陪你熬夜 聊天到爆肝也没关系
