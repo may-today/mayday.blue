@@ -1,7 +1,6 @@
 import AstroPWA from '@vite-pwa/astro'
 
 export const pwaConfig = AstroPWA({
-  mode: 'development',
   base: '/',
   scope: '/',
   includeAssets: [
@@ -45,9 +44,5 @@ export const pwaConfig = AstroPWA({
       /\/stats/,
       /\/setlist/,
     ],
-  },
-  devOptions: {
-    enabled: true,
-    type: 'module',
   },
 })

@@ -10,32 +10,32 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@ark-ui/react": "^1.2.1",
+    "@ark-ui/react": "^2.2.3",
     "@astrojs/prefetch": "^0.4.1",
-    "@astrojs/react": "^3.0.8",
-    "@nivo/line": "^0.84.0",
+    "@astrojs/react": "^3.3.1",
+    "@nivo/line": "^0.86.0",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-toggle-group": "^1.0.4",
-    "@unocss/reset": "^0.58.0",
-    "astro": "^4.0.7",
-    "clsx": "^2.0.0",
-    "date-fns": "^3.0.6",
+    "@unocss/reset": "^0.59.4",
+    "astro": "^4.7.0",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "limax": "^4.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "workbox-window": "^7.0.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "workbox-window": "^7.1.0"
   },
   "devDependencies": {
-    "@iconify-json/ph": "^1.1.9",
+    "@iconify-json/ph": "^1.1.12",
     "@rollup/plugin-yaml": "^4.1.2",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "@unocss/preset-icons": "^0.58.0",
-    "@unocss/preset-web-fonts": "^0.58.0",
-    "@unocss/transformer-directives": "^0.58.0",
-    "@vite-pwa/astro": "^0.2.0",
-    "unocss": "^0.58.0",
-    "vite-plugin-pwa": "^0.17.4"
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@unocss/preset-icons": "^0.59.4",
+    "@unocss/preset-web-fonts": "^0.59.4",
+    "@unocss/transformer-directives": "^0.59.4",
+    "@vite-pwa/astro": "^0.3.1",
+    "unocss": "^0.59.4",
+    "vite-plugin-pwa": "^0.19.8"
   }
 }
