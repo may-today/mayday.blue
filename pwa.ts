@@ -12,9 +12,9 @@ export const pwaConfig = AstroPWA({
   ],
   registerType: 'autoUpdate',
   manifest: {
-    name: 'Mayday.blue',
-    short_name: 'MayBlue',
-    description: 'Mayday lyrics collection',
+    name: '凤凰传奇',
+    short_name: '凤凰传奇',
+    description: '凤凰传奇歌词本',
     theme_color: '#ffffff',
     icons: [
       {

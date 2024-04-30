@@ -36,7 +36,7 @@ export default defineConfig({
         'fg-base': 'text-neutral-700 dark:text-neutral-300',
         'fg-lighter': 'text-neutral-400 dark:text-neutral-500',
         'fg-emphasis': 'text-dark-900 dark:text-light-900',
-        'fg-primary': 'text-sky-700 dark:text-sky-300',
+        'fg-primary': 'text-rose-700 dark:text-rose-300',
         'bg-primary': 'bg-sky-500/10 dark:bg-sky-300/10',
         'hv-base': 'transition-colors duration-300 cursor-pointer hover:fg-emphasis',
         'border-base': 'border-light-700 dark:border-dark-200',

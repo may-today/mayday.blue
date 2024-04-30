@@ -12,22 +12,6 @@ const lyricCollection = defineCollection({
   }),
 })
 
-const setListCollection = defineCollection({
-  type: 'data',
-  schema: z.object({
-    date: z.date(),
-    tour: z.string(),
-    startTime: z.string().optional(),
-    endTime: z.string().optional(),
-    place: z.string(),
-    guest: z.string().nullable(),
-    endingSong: z.string().optional(),
-    recorder: z.string().optional(),
-    list: z.array(z.string()),
-  }),
-})
-
 export const collections = {
   'lyrics': lyricCollection,
-  'setlists': setListCollection,
 }
