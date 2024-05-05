@@ -1,5 +1,5 @@
 ---
-album: 不再犹豫-Beyond
+album: 不再犹豫
 length: 222
 ---
 [00:00.000]
