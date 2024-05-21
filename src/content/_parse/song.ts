@@ -17,12 +17,19 @@ const sortFunc = <T extends SongMeta | SongStorage>(a: T, b: T) => {
   return a.slug.localeCompare(b.slug)
 }
 
-const rawSongsList = entries.map((entry) => ({
-  title: entry.id.replace('.md', '') as string,
-  slug: slugify(entry.slug),
-  meta: entry.data,
-  content: entry.body
-} as SongStorage)).sort(sortFunc)
+const rawSongsList = entries.map((entry) => {
+  const rawTitle = entry.id.replace('.md', '') as string
+  const titleArr = rawTitle.split('/', 2)
+  return {
+    title: titleArr.length > 1 ? titleArr[1] : titleArr[0],
+    slug: slugify(entry.slug),
+    meta: {
+      customIndex: titleArr.length > 1 ? titleArr[0] : undefined,
+      ...entry.data,
+    },
+    content: entry.body
+  } as SongStorage
+}).sort(sortFunc)
 
 function parseStorageToMeta(raw: SongStorage, showDetail: false): SongMeta
 function parseStorageToMeta(raw: SongStorage, showDetail: true): SongDetail
