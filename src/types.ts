@@ -8,6 +8,7 @@ export interface SongMeta {
     composer?: string
     banlam: boolean
     length?: number
+    showTitle?: string
   }
 }
 
