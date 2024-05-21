@@ -4,22 +4,35 @@ import type { SongMeta, SongGroup, LyricLine, SongStorage, SongDetail } from '@/
 
 const entries = await getCollection('lyrics')
 
+const sortFunc = <T extends SongMeta | SongStorage>(a: T, b: T) => {
+  if (a.meta?.customIndex && b.meta?.customIndex) {
+    return a.slug.localeCompare(b.slug)
+  }
+  if (a.meta?.customIndex) {
+    return -1
+  }
+  if (b.meta?.customIndex) {
+    return 1
+  }
+  return a.slug.localeCompare(b.slug)
+}
+
 const rawSongsList = entries.map((entry) => ({
   title: entry.id.replace('.md', '') as string,
   slug: slugify(entry.slug),
   meta: entry.data,
   content: entry.body
-} as SongStorage))
+} as SongStorage)).sort(sortFunc)
 
 function parseStorageToMeta(raw: SongStorage, showDetail: false): SongMeta
 function parseStorageToMeta(raw: SongStorage, showDetail: true): SongDetail
 function parseStorageToMeta(raw: SongStorage, showDetail: boolean): SongMeta | SongDetail {
   const firstLetter = raw.slug[0].toUpperCase()
-  const index = Number.isInteger(Number(firstLetter)) ? '#' : firstLetter
+  const calcIndex = Number.isInteger(Number(firstLetter)) ? '#' : firstLetter
   const songMeta = {
     title: raw.title,
     slug: raw.slug,
-    index,
+    index: raw.meta?.customIndex || calcIndex,
     meta: raw.meta,
   } as SongMeta
   if (showDetail) {
@@ -62,9 +75,18 @@ const parseContent = (content: string) => {
 
 const generateGroupedList = (songsList: SongStorage[]) => {
   const groupedDict = {} as Record<string, SongStorage[]>
+  const pinnedIndex = new Set<string>()
   songsList.forEach((song) => {
     const currentSong = { ...song }
     const firstLetter = currentSong.slug[0].toUpperCase()
+    if (song.meta?.customIndex) {
+      pinnedIndex.add(song.meta.customIndex)
+      if (!groupedDict[song.meta.customIndex]) {
+        groupedDict[song.meta.customIndex] = []
+      }
+      groupedDict[song.meta.customIndex].push(currentSong)
+      return
+    }
     if (Number.isInteger(Number(firstLetter))) {
       if (!groupedDict['#']) {
         groupedDict['#'] = []
@@ -81,10 +103,19 @@ const generateGroupedList = (songsList: SongStorage[]) => {
   Object.keys(groupedDict).forEach((key) => {
     grouped.push({
       key,
-      list: groupedDict[key].sort((a, b) => a.slug.localeCompare(b.slug)),
+      pin: pinnedIndex.has(key),
+      list: groupedDict[key],
     })
   })
-  grouped.sort((a, b) => a.key.localeCompare(b.key))
+  grouped.sort((a, b) => {
+    if (a.pin && !b.pin) {
+      return -1
+    }
+    if (!a.pin && b.pin) {
+      return 1
+    }
+    return a.key.localeCompare(b.key)
+  })
   return grouped
 }
 
@@ -105,8 +136,8 @@ const generateNameSlugDict = (rawSongsList: SongStorage[]) => {
 }
 
 export const groupedList = generateGroupedList(rawSongsList)
-export const metaList = rawSongsList.map(item => parseStorageToMeta(item, false)).sort((a, b) => a.slug.localeCompare(b.slug))
-export const detailList = rawSongsList.map(item => parseStorageToMeta(item, true)).sort((a, b) => a.slug.localeCompare(b.slug))
+export const metaList = rawSongsList.map(item => parseStorageToMeta(item, false))
+export const detailList = rawSongsList.map(item => parseStorageToMeta(item, true))
 export const metaDict = generateDict(metaList)
 export const detailDict = generateDict(detailList)
 export const nameSlugDict = generateNameSlugDict(rawSongsList)

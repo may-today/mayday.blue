@@ -9,6 +9,7 @@ export interface SongMeta {
     banlam: boolean
     length?: number
     showTitle?: string
+    customIndex?: string
   }
 }
 
@@ -30,6 +31,7 @@ export interface LyricLine {
 
 export interface SongGroup {
   key: string
+  pin?: boolean
   list: SongStorage[]
 }
 

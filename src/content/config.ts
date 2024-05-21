@@ -10,6 +10,7 @@ const lyricCollection = defineCollection({
     composer: z.string().optional(),
     length: z.number().optional(),
     showTitle: z.string().optional(),
+    customIndex: z.string().optional(),
   }),
 })
 
