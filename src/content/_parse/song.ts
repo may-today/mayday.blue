@@ -82,6 +82,14 @@ const parseContent = (content: string) => {
       toneText2: toneText2?.replaceAll('  ', '\u00a0\u00a0') || undefined,
     } as LyricLine
   }).filter(line => line) as LyricLine[]
+  // add white space to the last line
+  if (lyricLines.length > 0 && lyricLines[lyricLines.length - 1].text !== '') {
+    lyricLines.push({
+      time: -1,
+      text: '',
+      isHighlight: false,
+    })
+  }
   return lyricLines
 }
 
