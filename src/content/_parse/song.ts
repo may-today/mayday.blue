@@ -6,6 +6,11 @@ const entries = await getCollection('lyrics')
 
 const sortFunc = <T extends SongMeta | SongStorage>(a: T, b: T) => {
   if (a.meta?.customIndex && b.meta?.customIndex) {
+    if (a.title.includes('.') && b.title.includes('.')) {
+      const indexA = Number(a.title.split('.', 1)[0])
+      const indexB = Number(b.title.split('.', 1)[0])
+      return indexA - indexB
+    }
     return a.slug.localeCompare(b.slug)
   }
   if (a.meta?.customIndex) {
