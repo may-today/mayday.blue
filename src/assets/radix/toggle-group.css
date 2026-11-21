@@ -1,7 +1,0 @@
-[role='radio'][data-radix-collection-item] {
-  @apply bg-transparent rounded-md px-3 py-1 text-sm font-medium transition-all relative;
-}
-
-[role='radio'][data-radix-collection-item][data-state='on'] {
-  @apply bg-hover;
-}
