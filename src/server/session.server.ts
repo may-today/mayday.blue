@@ -10,7 +10,7 @@ import {
 const SESSION_COOKIE = 'mb_session'
 const LOGIN_COOKIE = 'mb_login'
 const SESSION_MAX_AGE_S = 30 * 24 * 60 * 60
-const LOGIN_MAX_AGE_S = 5 * 60
+const LOGIN_MAX_AGE_S = 2 * 60
 
 const cookieOptions = (maxAge: number) => ({
   httpOnly: true,

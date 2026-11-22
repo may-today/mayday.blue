@@ -2,7 +2,7 @@
 // functions, used when CLOUDBASE_MOCK=1 so the site runs without CloudBase.
 import { randomBytes } from 'node:crypto'
 
-const LOGIN_TTL_MS = 5 * 60 * 1000
+const LOGIN_TTL_MS = 2 * 60 * 1000
 
 interface MockLogin {
   pollSecret: string

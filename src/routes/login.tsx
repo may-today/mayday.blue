@@ -4,18 +4,27 @@ import { useCallback, useEffect, useState } from 'react'
 import { confirmMockLogin, pollLogin, startLogin } from '../lib/session.functions.ts'
 
 const POLL_INTERVAL_MS = 2000
+const POLL_TIMEOUT_MS = 2 * 60 * 1000
 
 type Phase =
   | { kind: 'loading' }
-  | { kind: 'scan'; code: string; mock: boolean }
+  | { kind: 'scan'; code: string; deadline: number; mock: boolean }
   | { kind: 'stopped'; message: string }
   | { kind: 'failed'; message: string }
 
 const STOPPED_MESSAGES = {
   cancelled: '已在手机上取消',
-  expired: '登录码已过期',
+  expired: '登录码已过期，请刷新页面重新获取',
   used: '这个登录码已经用过了',
 } as const
+
+const resolveDeadline = (expiresAt: string): number => {
+  const localDeadline = Date.now() + POLL_TIMEOUT_MS
+  const serverDeadline = Date.parse(expiresAt)
+  return Number.isFinite(serverDeadline)
+    ? Math.min(serverDeadline, localDeadline)
+    : localDeadline
+}
 
 const LoginPage = () => {
   const router = useRouter()
@@ -25,7 +34,12 @@ const LoginPage = () => {
     setPhase({ kind: 'loading' })
     try {
       const login = await startLogin()
-      setPhase({ code: login.code, kind: 'scan', mock: login.mock })
+      setPhase({
+        code: login.code,
+        deadline: resolveDeadline(login.expiresAt),
+        kind: 'scan',
+        mock: login.mock,
+      })
     } catch {
       setPhase({ kind: 'failed', message: '登录码生成失败，稍后再试' })
     }
@@ -35,13 +49,43 @@ const LoginPage = () => {
     void begin()
   }, [begin])
 
-  const scanning = phase.kind === 'scan'
+  const deadline = phase.kind === 'scan' ? phase.deadline : null
   useEffect(() => {
-    if (!scanning) {
+    if (deadline === null) {
       return
     }
     let stopped = false
+    let polling = false
+
+    const stopWith = (message: string) => {
+      if (stopped) {
+        return
+      }
+      stopped = true
+      clearInterval(timer)
+      clearTimeout(timeout)
+      setPhase({ kind: 'stopped', message })
+    }
+
+    const remaining = deadline - Date.now()
+    if (remaining <= 0) {
+      setPhase({ kind: 'stopped', message: STOPPED_MESSAGES.expired })
+      return
+    }
+
+    const timeout = setTimeout(
+      () => stopWith(STOPPED_MESSAGES.expired),
+      remaining
+    )
     const timer = setInterval(async () => {
+      if (stopped || polling) {
+        return
+      }
+      if (Date.now() >= deadline) {
+        stopWith(STOPPED_MESSAGES.expired)
+        return
+      }
+      polling = true
       try {
         const result = await pollLogin()
         if (stopped || result.status === 'pending') {
@@ -49,6 +93,7 @@ const LoginPage = () => {
         }
         stopped = true
         clearInterval(timer)
+        clearTimeout(timeout)
         if (result.status === 'confirmed') {
           await router.invalidate()
           await router.navigate({ to: '/presets' })
@@ -56,14 +101,17 @@ const LoginPage = () => {
         }
         setPhase({ kind: 'stopped', message: STOPPED_MESSAGES[result.status] })
       } catch {
-        // A dropped poll is retried on the next tick.
+        // A dropped poll is retried on the next tick until the timeout expires.
+      } finally {
+        polling = false
       }
     }, POLL_INTERVAL_MS)
     return () => {
       stopped = true
       clearInterval(timer)
+      clearTimeout(timeout)
     }
-  }, [scanning, router])
+  }, [deadline, router])
 
   return (
     <main className="mx-auto flex w-full max-w-4xl justify-center px-5 pt-16 pb-24">
